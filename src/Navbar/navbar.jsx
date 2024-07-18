@@ -20,7 +20,7 @@ export const NavBar =()=>{
                     />
                 </div>
             </div>
-            <ul ref={navRef} className="navRef md:flex-row flex-col md:items-center items-start bg-surfaceWhite md:bg-white p-4 rounded gap-4 justify-between md:w-[45%] w-full">
+            <ul ref={navRef} className="navRef md:flex-row flex-col md:items-center items-start bg-surfaceWhite md:bg-white p-4 rounded gap-4 justify-between lg:w-[45%] w-full">
                 {
                     Pageroutes.map((route,index)=>(
                         <li key={index}>

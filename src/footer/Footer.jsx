@@ -31,7 +31,7 @@ export const Footer =()=>{
     }
 
     return(
-        <footer className="md:px-[8rem] md:p-12 p-4 py-8 flex flex-col gap-4 bg-mediumgrey w-full">
+        <footer className="lg:px-[8rem] md:px-[4rem] md:p-12 p-4 py-8 flex flex-col gap-4 bg-mediumgrey w-full">
             <div className="grid md:grid-cols-3 grid-cols-1 md:gap-12 gap-8 ">
                 {FooterLinks.map((links,index)=>(
                     <div key={index} className="flex flex-col gap-2">
