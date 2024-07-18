@@ -51,7 +51,7 @@ export const Footer =()=>{
                         <FormControl>
                             <Input placeholder="xyz@gmail.com" {...field} type="email" required className="w-full"/>
                         </FormControl>
-                        <FormDescription className="text-xs md:bloack hidden">
+                        <FormDescription className="text-xs md:block hidden">
                             Enter your email
                         </FormDescription>
                         <FormMessage />
