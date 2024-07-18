@@ -36,7 +36,7 @@ export const Footer =()=>{
                 {FooterLinks.map((links,index)=>(
                     <div key={index} className="flex flex-col gap-2">
                         <Text key={index} as="h3" style="md:text-lg text-md font-semibold w-fit">{links.Header}</Text>
-                        {links.links.map((item,index)=>item.routes?<Link key={index} to={item.routes} className="md:text-md text-sm w-fit">{item.title}</Link>:<Text key={index} as="h4" style="md:text-md text-sm">{item.title}</Text>)}
+                        {links.links.map((item,index)=>item.routes?<Link key={index} to={item.routes} className="md:text-lg text-sm w-fit">{item.title}</Link>:<Text key={index} as="h4" style="md:text-lg text-sm">{item.title}</Text>)}
                     </div>
                 ))}
             </div>
@@ -47,13 +47,10 @@ export const Footer =()=>{
                     name="mail"
                     render={({ field }) => (
                         <FormItem className="flex-grow">
-                        <FormLabel className="md:text-md text-sm">Subscribe to our news letter</FormLabel>
+                        <FormLabel className="md:text-lg text-sm">Subscribe to our news letter</FormLabel>
                         <FormControl>
                             <Input placeholder="xyz@gmail.com" {...field} type="email" required className="w-full"/>
                         </FormControl>
-                        <FormDescription className="text-xs md:block hidden">
-                            Enter your email
-                        </FormDescription>
                         <FormMessage />
                         </FormItem>
                     )}

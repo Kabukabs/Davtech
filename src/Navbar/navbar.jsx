@@ -11,7 +11,7 @@ export const NavBar =()=>{
         <nav className="flex md:flex-row flex-col md:items-center items-start md:gap-[5rem] gap-8 m-auto md:px-[2rem] md:py-[1rem] py-[0.5rem] px-[1rem] border-b-4 border-b-[ghostwhite] navBg">
             <div className ="md:w-fit w-full flex justify-between items-center">
                 <AppLogo/>
-                <div className="lg:hidden xl:hidden md:block sm:block xs:block">
+                <div className="md:hidden block">
                     <Hamburger
                         onToggle={() => navRef.current !==null && navRef.current.classList.toggle("active")} 
                         color="black"
