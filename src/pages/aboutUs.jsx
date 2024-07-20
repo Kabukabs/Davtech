@@ -46,7 +46,7 @@ export const AboutUs = () => (
           OTHER SERVICES
         </h2> 
         <div className="flex flex-wrap justify-center space-x-4 space-y-4 md:space-x-6 lg:space-x-8 gap-12">
-          <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
+        <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl flex-shrink-0 mt-4">
             <img src={app} alt="App Development" className="h-12 mb-2"/>
             App Development
           </span>
