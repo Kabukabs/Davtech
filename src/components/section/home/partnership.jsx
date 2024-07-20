@@ -1,7 +1,7 @@
 import { Text } from "../../ui/text"
 export const Partnership =()=>{
     return(
-        <div className=" w-full md:gap-8 gap-4 md:px-[8rem] md:pb-[4rem] p-4">
+        <div className=" w-full md:gap-8 gap-4 lg:px-[8rem] md:px-[4rem] md:pb-[4rem] p-4">
             <Text
                 as="h2"
                 style="text-4xl font-extrabold mb-8 text-blue"

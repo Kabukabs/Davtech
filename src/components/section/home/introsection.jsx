@@ -3,43 +3,43 @@ import { Button } from "@/components/ui/button"
 
 export const Introsection =()=>{
     return(
-        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[10rem] gap-4 md:py-[2rem] md:px-[4rem] px-4 py-[3rem]">
-            <div className="w-full">
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-[10rem] md:gap-[5rem] gap-4 md:py-[2rem] md:px-[4rem] px-4 py-[3rem]">
+            <div className="w-full ">
                 <img 
                     src="/intro-hero.svg"
                     alt="object not found"
                     className="w-full"
                 />
             </div>
-            <div className="flex flex-col md:gap-[3rem] gap-[2rem]">
+            <div className="flex flex-col md:gap-[3rem] gap-[2rem] md:order-none order-first">
                 <div>
                     <Text
                         as="h2"
-                        style="md:text-5xl text-4xl font-extrabold"
+                        style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
                         >
                         EMPOWERING 
                     </Text>
                     <Text
                         as="h2"
-                        style="md:text-5xl text-4xl font-extrabold text-blue"
+                        style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold text-blue"
                         >
                         INVESTMENT
                     </Text>
                     <Text
                         as="h2"
-                        style="md:text-5xl text-4xl font-extrabold"
+                        style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
                         >
                         THROUGH
                     </Text>
                     <Text
                         as="h2"
-                        style="md:text-5xl text-4xl font-extrabold text-blue"
+                        style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold text-blue"
                         >
                         DATA-DRIVEN
                     </Text>
                     <Text
                         as="h2"
-                        style="md:text-5xl text-4xl font-extrabold"
+                        style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
                         >
                         SOLUTIONS
                     </Text>
@@ -47,7 +47,7 @@ export const Introsection =()=>{
                     <div>
                         <Text
                             as="h4"
-                            style="md:text-xl text-lg font-semibold md:w-[50%] w-full"
+                            style="md:text-xl text-lg font-semibold lg:w-[50%] w-full"
                             >
                             Leveraging Web2 & Web3 
                             Technologies For Investable 

@@ -4,8 +4,8 @@
 .navBg{
 background:linear-gradient(to right, #FFFfFF, #F9FEFF)
 }
-@media only screen and (min-width:320px) and (max-width:768px){
-.navRef{
-    display:none;
-}
+@media only screen and (min-width:320px) and (max-width:767px){
+    .navRef{
+        display:none;
+    }
 }
