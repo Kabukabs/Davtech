@@ -1,7 +1,7 @@
-import careerimage  from "/careerimage.svg";
+import careerimage from "/careerimage.svg";
 
-export default function Thankyou(){
-   
+export default function Thankyou() {
+  const telegramNumber = +111111111111;
   return (
     <div
       style={{ backgroundImage: `url(${careerimage})` }}
@@ -17,14 +17,19 @@ export default function Thankyou(){
           Skilled Individuals Can Gain Hands-On ExperienceThrough Collaborative
           Projects.{" "}
         </p>
-       
       </div>
       <div>
-      <img src="/Thankyou.jpg" alt="Thank You" />
-      <p>Thank You For Joining!</p>
-      <p>Click Here To Connect With Us On Telegram And Stay Updated On All Our Latest News And Opportunities</p>
-
+        <img src="/Thankyou.jpg" alt="Thank You" />
+        <p>Thank You For Joining!</p>
+        <a
+          href={`https://wa.me/${telegramNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click Here To Connect With Us On Telegram And Stay Updated On All Our
+          Latest News And Opportunities
+        </a>
       </div>
     </div>
   );
-};
+}
