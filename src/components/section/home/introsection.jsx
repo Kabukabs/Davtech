@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button"
 
 export const Introsection =()=>{
     return(
-        <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-[10rem] md:gap-[5rem] gap-4 md:py-[2rem] md:px-[4rem] px-4 py-[3rem]">
-            <div className="w-full ">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[10rem] gap-4 md:py-[2arem] md:px-[4rem] px-4 py-[3rem]">
+            <div className="w-full">
                 <img 
                     src="/intro-hero.svg"
                     alt="object not found"
