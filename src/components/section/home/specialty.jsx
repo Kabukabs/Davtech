@@ -2,7 +2,7 @@ import { Text } from "../../ui/text"
 
 export const Specialty =()=>{
     return(
-        <div className=" w-full md:gap-8 gap-4 md:px-[8rem] md:py-[5rem] p-4 py-[3rem]">
+        <div className=" w-full md:gap-8 gap-4 lg:px-[8rem] md:px-[4rem] md:py-[5rem] p-4 py-[3rem]">
             <Text
                 as="h4"
                 style="text-2xl font-semibold mb-8 md:w-[85%] w-full"

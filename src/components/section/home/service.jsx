@@ -10,7 +10,7 @@ export const Service =()=>{
                 >
                 SERVICES
             </Text>
-            <div className="service_herobg w-full grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-4 md:px-[8rem] md:py-8 p-2">
+            <div className="service_herobg w-full grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-4 lg:px-[8rem] md:px-[4rem] md:py-0 p-2">
                 {Services.map((info,index)=>(
                     <div key={index} className="flex flex-col items-center justify-center gap-4 p-8 shadow rounded-2xl bg-white">
                         <div className="w-[8rem">
