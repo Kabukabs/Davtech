@@ -30,7 +30,7 @@ export default function SkillCollab() {
         <h2>SKILLFUL COLLABORATION</h2>
         <p>
           Embark On A Transformative Journey With DavTechinvest, Where You Can
-          Access Personalized Mentorship{" "}
+          Access Personalized Mentorship, Engage In Collaborative Projects, And Build A Standout Portfolio. Turn Your Ideas Into Reality And Gain Hands-On Experience While Potentially Becoming A Startup Owner. Ready To Elevate Your Career? Join Our Dynamic Community Today!
         </p>
         <p>
           fill out the form below to express your interest and help cultivate
