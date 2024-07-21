@@ -30,8 +30,8 @@ export default function MentorAdvisor() {
       <div>
         <h2>MENTOR/ADVISOR</h2>
         <p>
-          Embark On A Transformative Journey With DavTechinvest, Where You Can
-          Access Personalized Mentorship{" "}
+          Join DavTechinvest As A Mentor Or Advisor To Shape The Future Of Technology And Careers By Sharing Your Expertise With Aspiring Tech Professionals. You`ll Empower The next Generation Of Leaders, Expand Your Network , Stay Updated On Industry Trends, And Play A Pivotal Role In Transforming Ideas Into Successful Ventures. Fill Out The Form Below To Express Your Interest And Help Cultivate
+          Talent And Drive Innovation.
         </p>
         <p>
           fill out the form below to express your interest and help cultivate
