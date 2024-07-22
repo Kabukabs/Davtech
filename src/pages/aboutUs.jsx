@@ -11,11 +11,11 @@ import career from '../assets/career.png'
 export const AboutUs = () => (
   <>
     <div className="px-4 py-8 md:px-8 md:py-16 lg:px-16 lg:py-24 overflow-hidden">
-      <section className="flex flex-col items-center md:flex-row md:items-start">
+    <section className="flex flex-col items-center md:flex-row md:items-start">
         <img
           src={img1}
           alt="Tech Illustration"
-          className="w-3/4 md:w-1/2 md:mr-32 lg:w-1/3 mb-6 md:mb-0"
+          className="w-3/4 md:w-1/2 lg:w-1/3 mb-6 md:mr-32 md:mb-0"
         />
         <div className="md:ml-6 lg:ml-12 text-center md:text-left">
           <h1 className="text-4xl font-extrabold md:text-3xl lg:text-4xl text-sky-800 mb-4">
