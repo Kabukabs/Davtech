@@ -15,7 +15,7 @@ export const AboutUs = () => (
         <img
           src={img1}
           alt="Tech Illustration"
-          className="w-3/4 md:w-1/2 lg:w-1/3 mb-6 md:mb-0"
+          className="w-3/4 md:w-1/2 md:mr-32 lg:w-1/3 mb-6 md:mb-0"
         />
         <div className="md:ml-6 lg:ml-12 text-center md:text-left">
           <h1 className="text-4xl font-extrabold md:text-3xl lg:text-4xl text-sky-800 mb-4">
@@ -31,9 +31,6 @@ export const AboutUs = () => (
             Strategies.
           </p>
           <div className="flex justify-center md:justify-start space-x-4 font-semibold text-2xl">
-            <button className="border-blue border-2 text-black px-4 py-2">
-              Sign Up
-            </button>
             <button className="bg-blue text-white px-4 py-2">
               Contact Us
             </button>
