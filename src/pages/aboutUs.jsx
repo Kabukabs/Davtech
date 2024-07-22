@@ -15,7 +15,7 @@ export const AboutUs = () => (
         <img
           src={img1}
           alt="Tech Illustration"
-          className="w-3/4 md:w-1/2 lg:w-1/3 mb-6 md:mb-0"
+          className="w-3/4 md:w-1/2 md:mr-32 lg:w-1/3 mb-6 md:mb-0"
         />
         <div className="md:ml-6 lg:ml-12 text-center md:text-left">
           <h1 className="text-4xl font-extrabold md:text-3xl lg:text-4xl text-sky-800 mb-4">
