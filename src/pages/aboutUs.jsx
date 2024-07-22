@@ -31,9 +31,6 @@ export const AboutUs = () => (
             Strategies.
           </p>
           <div className="flex justify-center md:justify-start space-x-4 font-semibold text-2xl">
-            <button className="border-blue border-2 text-black px-4 py-2">
-              Sign Up
-            </button>
             <button className="bg-blue text-white px-4 py-2">
               Contact Us
             </button>
