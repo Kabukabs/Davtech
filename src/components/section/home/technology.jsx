@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { Text } from "../../ui/text"
 export const Technology=()=>{
     return(
-        <div className=" w-full md:gap-8 gap-4 md:px-[8rem] md:py-0 md:pb-[5rem] p-4">
+        <div className=" w-full md:gap-8 gap-4 lg:px-[8rem] md:px-[4rem] md:py-0 md:pb-[5rem] p-4">
             <Text
                 as="h2"
                 style="text-4xl font-extrabold mb-8 text-blue"
