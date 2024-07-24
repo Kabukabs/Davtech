@@ -6,9 +6,9 @@ export const Careerpage = () => {
     <div className="relative h-screen flex flex-col">
     <div
       style={{ backgroundImage: `url(${careerimage})` }}
-      className=" bg-cover bg-center h-[70vh] w-full bg-no-repeat"
+      className=" bg-cover bg-center h-full w-full bg-no-repeat"
     >
-      <div className="flex items-center justify-center h-full bg-black bg-opacity-40 ">
+      <div className="flex items-center justify-center h-full bg-opacity-40 ">
       <div className="w-full md:w-[70%] px-4 sm:px-6 lg:px-8 text-center text-white  my-[10rem]">
         <h2 className="text-teal-500 text-[70px] sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-extrabold">
           JOIN OUR TEAM
@@ -22,19 +22,18 @@ export const Careerpage = () => {
         <h4 className="text-[20px] text-teal-500 py-8 px-4  ">JOIN AS A</h4>
         <div className="mb-6">
         <Link to="/skill-collab">
-            <button className="bg-white text-blue py-2 px-6 rounded-[30px] font-extrabold w-full md:w-[300px] h-12">SKILLFUL COLLABORATION</button>
+            <button className="bg-white text-blue py-2 px-6 rounded-[30px] font-extrabold w-full sm:w-[200px] md:w-[250px] lg:w-[300px] h-12">SKILLFUL COLLABORATION</button>
           </Link>
         </div>
         <div>
         <Link to="/mentor-advisor">
-            <button className="bg-white text-blue py-2 px-6 rounded-[30px] font-extrabold w-full md:w-[300px] h-12">MENTOR/ADVISOR</button>
+            <button className="bg-white text-blue py-2 px-6 rounded-[30px] font-extrabold w-full sm:w-[200px] md:w-[250px] lg:w-[300px] h-12">MENTOR/ADVISOR</button>
           </Link>
         </div>
       </div>
       </div>
     </div>
-    <div className="flex-grow bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      </div>
+   
     </div>
   );
 };

@@ -21,6 +21,8 @@ module.exports = {
         'sm':"320px",
       },
       colors: {
+        darkblue: "#00008b",
+        babyblue: "#89CFF0",
         blue:"#007AFF",
         grey:"#D9D9D9",
         surfaceWhite:"#FAFBF9",
