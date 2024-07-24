@@ -10,6 +10,9 @@
 .service_herobg{
   background-image: url("/service_hero5.svg");
 }
+.specialty_herobg{
+  background-image: url("https://i-solutions-media-website.vercel.app/_next/static/media/noiseEffect%20About%20us.bd359dc5.svg");
+}
 .serviceCard{
   box-shadow: 0px 0px 0px 0px #FFF inset, 0px 0px 0px 0px white inset, 0px 0px 0px 1px rgba(9, 9, 11, 0.08), 0px 16px 32px 0px white, 0px 2px 24px 0px rgba(9, 9, 11, 0.08);
 }

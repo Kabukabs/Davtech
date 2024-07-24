@@ -33,11 +33,11 @@ export const FooterLinks=[
         Header:"Contact Us",
         links:[
             {
-                title:"XYZ main street, Kaduna"
+                title:"Abuja Nigeria."
             },{
-                title:"123-456-7890"
+                title:"07072779788"
             },{
-                title:"Info@example.com"
+                title:"techdavinvest@gmail.com"
             }
         ]
 

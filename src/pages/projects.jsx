@@ -1,5 +1,7 @@
-export const Project =()=>(
-    <>
-        <div>Ooops No Content for project yet</div>
-    </>
-)
+import { Projects } from '../components/section/projects/projects';
+
+export const Project = () => (
+  <>
+    <Projects />
+  </>
+);
