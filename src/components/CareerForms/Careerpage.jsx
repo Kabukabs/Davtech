@@ -6,7 +6,7 @@ export const Careerpage = () => {
     <div className="relative h-screen flex flex-col">
     <div
       style={{ backgroundImage: `url(${careerimage})` }}
-      className=" bg-cover bg-center h-[70vh] w-full bg-no-repeat"
+      className=" bg-cover bg-center h-[100vh] w-full bg-no-repeat"
     >
       <div className="flex items-center justify-center h-full bg-black bg-opacity-40 ">
       <div className="w-full md:w-[70%] px-4 sm:px-6 lg:px-8 text-center text-white  my-[10rem]">
@@ -33,8 +33,7 @@ export const Careerpage = () => {
       </div>
       </div>
     </div>
-    <div className="flex-grow bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      </div>
+   
     </div>
   );
 };
