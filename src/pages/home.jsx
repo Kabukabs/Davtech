@@ -12,6 +12,7 @@ export const Home = () => {
       <Specialty />
       <Partnership />
       <Technology />
+      
     </>
   );
 };
