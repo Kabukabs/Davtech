@@ -8,7 +8,7 @@ const initialState = {
   cv: null,
   joinas1: false,
   joinas2: false,
-};
+}
 export default function MentorAdvisor() {
   const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
