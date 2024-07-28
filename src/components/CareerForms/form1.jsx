@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const initialState = {
-  name: "",
-  email: "",
-  phone: "",
-  experience: "",
+  name: '',
+  email: '',
+  phone: '',
+  experience: '',
   cv: null,
-};
+}
 export default function SkillCollab() {
   const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
-  const [cvFileName, setCvFileName] = useState("Click To Upload");
+  const [cvFileName, setCvFileName] = useState('Click To Upload');
   const submitForm = (event) => {
     event.preventDefault();
     setForm(initialState);
-    navigate("/thank-you");
+    navigate('/thank-you');
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,7 +23,7 @@ export default function SkillCollab() {
   const handleUpload = (event) => {
     const { name, files } = event.target;
     setForm({ ...form, [name]: files[0] });
-    setCvFileName(files[0] ? files[0].name : "Click To Upload");
+    setCvFileName(files[0] ? files[0].name : 'Click To Upload');
   };
 
   return (
