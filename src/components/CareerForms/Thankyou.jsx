@@ -20,7 +20,7 @@ export default function Thankyou() {
           Projects.{" "}
         </p>
         </div>
-        <div className="bg-white w-[600px] rounded-lg shadow-lg mt-12 h-[300px]">
+        <div className="bg-white flex flex-col justify-center items-center w-[600px] rounded-lg shadow-lg mt-12 h-[300px]">
         <img src="/Thankyou.jpg" alt="Thank You" 
          className="w-64 mt-2 object-cover "/>
          <p className="">Thank You For Joining!</p>
