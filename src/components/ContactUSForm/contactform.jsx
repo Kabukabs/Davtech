@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
+import ReCAPTCHA from "react-google-recaptcha";
 const initialState = {
   name: "",
   email: "",
@@ -6,10 +8,11 @@ const initialState = {
 };
 export default function ContactUsForm() {
   const [form, setForm] = useState(initialState);
-  const submitForm = (event) => {
-    event.preventDefault();
-    setForm(initialState);
-  };
+  const [captchaValue, setCaptchaValue] = useState(null);
+  const formRef = useRef();
+  const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm({
@@ -17,9 +20,36 @@ export default function ContactUsForm() {
       [name]: value,
     });
   };
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
+  const sendEmail = (event) => {
+    event.preventDefault();
+    if (!captchaValue) {
+      alert("Please verify that you are a human!");
+      return;
+    }
+
+    emailjs
+      .sendForm('service_cjx0wxe', 'template_evb8bo7', formRef.current, {
+        publicKey: 'DPzMJ9yxiCT6adfIN',
+      })
+      .then((result) => {
+          setSuccess(true);
+          setError(false);
+          setForm(initialState);
+          setCaptchaValue(null);
+        },
+        (error) => {
+          setError(true);
+          setSuccess(false);
+        },
+      );
+  };
+
   return (
     <div>
-      <form onSubmit = {submitForm} class="w-full max-w-[800px]">
+      <form onSubmit ={sendEmail} ref={formRef}class="w-full max-w-[800px]">
        <div>
         <input 
         onChange={(event) => handleChange(event)}
@@ -53,9 +83,17 @@ export default function ContactUsForm() {
               cols="50"/>
         </div>
         <div>
+          <ReCAPTCHA
+            sitekey="6LftdhwqAAAAADcfG8owy9QpSc-B6yoKmbmLpLeA" // Replace with your reCAPTCHA site key
+            onChange={handleCaptchaChange}
+          />
+        </div>
+        <div>
             <input
             type="submit"
             value="submit"></input>
+            {error && <p>Error occured while sending the message. Please try again</p>}
+            {success && <p>Message sent successfully!</p>}
         </div>
       </form>
     </div>
