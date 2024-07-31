@@ -49,7 +49,7 @@ export default function ContactUsForm() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit ={sendEmail} ref={formRef}className="w-full max-w-[800px]">
+      <form onSubmit ={sendEmail} ref={formRef}className="w-full max-w-[600px]">
        <div className="mb-4">
         <input 
         onChange={(event) => handleChange(event)}
@@ -61,7 +61,7 @@ export default function ContactUsForm() {
         class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
         />
         </div> 
-        <div className="mb-2 mt-10">
+        <div className="mb-6 mt-10">
             <input
             onChange={(event) => handleChange(event)}
             name = "email"
@@ -69,10 +69,10 @@ export default function ContactUsForm() {
             placeholder="Email Address"
             value = {form.email}
             required
-            class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"/>
+            class=" appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"/>
         </div>
-        <div className="mb-4">
-            <p>Please enter the email address where you wish to receive our answer. If you are a registered member of DavTechinvest, please include the email address you used when you registered if possible to help us locate your account as soon as possible</p>
+        <div className="mb-4 mt-10 ml-10">
+            <p className="text-[15px]"> <strong>Please enter the email address where you wish to receive our answer. If you are a registered member of DavTechinvest, please include the email address you used when you registered if possible to help us locate your account as soon as possible. </strong></p>
         </div>
         <div>
             <textarea
@@ -80,13 +80,13 @@ export default function ContactUsForm() {
             name = "message"
             placeholder="Message"
             value = {form.message}
-            class=" mb-4 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
+            class=" mb-4 ml-10 appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-experience"
               rows="5"
               cols="50"
               required/>
         </div>
-        <div className="mb-4 flex">
+        <div className="mb-4 ml-10 flex">
           <ReCAPTCHA
             sitekey="6LftdhwqAAAAADcfG8owy9QpSc-B6yoKmbmLpLeA" // Replace with your reCAPTCHA site key
             onChange={handleCaptchaChange}
