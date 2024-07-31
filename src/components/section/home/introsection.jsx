@@ -1,9 +1,15 @@
 import { useAppContext } from '../../../lib/context/app.context';
 import { Text } from '../../ui/custom-ui/text';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const Introsection = () => {
-  const {showToast } = useAppContext();
+  //const {showToast } = useAppContext();
+  const navigate  = useNavigate();
+  const handleClick = () => {
+    //showToast(<div>Hello, toast here!</div>);
+    navigate('/contact us');
+  };
   return (
     <div className="max-w-[1540px] grid md:grid-cols-2 grid-cols-1 lg:gap-[10rem] md:gap-[5rem] gap-4 md:py-[2rem] xl:px-[14rem] md:px-[4rem] px-4 py-[3rem]">
       <div className="w-full ">
@@ -52,9 +58,9 @@ export const Introsection = () => {
         </div>
         <div className="grid grid-cols-2">
           <Button 
-            onClick={()=>showToast(<div>helo toast here!</div>)}
+            onClick={handleClick}
             className="text-blue border border-blue bg-[#F9FEFF] md:text-xl text-md font-semibol py-[1.5rem] rounded">
-            Sign Up
+            Contact Us
           </Button>
           {/* <Button className="text-white border bg-blue border border-blue md:text-xl text-md font-semibold py-[1.5rem] rounded mr-[-0.3rem]">
             Contact Us
