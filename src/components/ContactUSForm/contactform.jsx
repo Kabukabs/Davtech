@@ -56,6 +56,7 @@ export default function ContactUsForm() {
         type="text"
         value = {form.name}
         name="name"
+        required
         placeholder="Name"
         class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
         />
@@ -67,6 +68,7 @@ export default function ContactUsForm() {
             type="email"
             placeholder="Email Address"
             value = {form.email}
+            required
             class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"/>
         </div>
         <div className="mb-4">
@@ -81,7 +83,8 @@ export default function ContactUsForm() {
             class=" mb-4 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-experience"
               rows="5"
-              cols="50"/>
+              cols="50"
+              required/>
         </div>
         <div className="mb-4 flex">
           <ReCAPTCHA
