@@ -1,7 +1,7 @@
-import backgroundImage from "../../../public/imagecontact.jpg";
+import backgroundImage from "/imagecontact.jpg";
 export default function Contactus(){
     return(
-        <div>
+        <div >
             <div  style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
