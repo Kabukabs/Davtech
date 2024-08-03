@@ -34,15 +34,18 @@ export default function MentorAdvisor() {
   const submitForm = async (event) => {
     event.preventDefault();
     setLoading(true);
-  
+
     try {
       let cvUrl = '';
       if (form.cv) {
         const cvRef = ref(storage, `cv/${form.cv.name}`);
+        console.log('Uploading CV:', form.cv.name);
         await uploadBytes(cvRef, form.cv);
+        console.log('CV uploaded successfully');
         cvUrl = await getDownloadURL(cvRef);
+        console.log('CV download URL:', cvUrl);
       }
-  
+
       const formData = {
         name: form.name || "",
         email: form.email || "",
@@ -52,9 +55,27 @@ export default function MentorAdvisor() {
         mentor: form.mentor || false,
         advisor: form.advisor || false,
       };
-  
+
+      console.log('Submitting form data:', formData);
+
       await addDoc(collection(db, 'mentors_advisors'), formData);
-  
+      console.log('Form data added to Firestore');
+
+      // Send form data to the server using fetch
+      const response = await fetch('http://localhost:5174/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      console.log('Form data sent to server');
+
       setForm(initialState);
       setCvFileName("Click To Upload");
       navigate("/thank-you");
