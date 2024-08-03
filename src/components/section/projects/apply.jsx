@@ -29,7 +29,7 @@ export const ApplyForJob = () => {
 
   return (
     <div>
-      <div classname="max-w-[1540px] flex flex-col gap-4">
+      <div className="max-w-[1540px] flex flex-col gap-4">
         <Text
           as="h6"
           style=" text-center text-blue md:text-2xl font-extrabold border-b-2 border-blue mb-8 w-fit m-auto"
