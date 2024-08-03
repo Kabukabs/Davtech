@@ -1,5 +1,8 @@
+import Contactus from "../components/ContactUSForm/contactus"
+import ContactUsForm from "../components/ContactUSForm/contactform"
 export const ContactUs =()=>(
     <>
-        <div>Ooops No Content for ContactUs yet</div>
+        <Contactus></Contactus>
+        <ContactUsForm></ContactUsForm>
     </>
 )
