@@ -37,10 +37,15 @@ export default function MentorAdvisor() {
   
     try {
       let cvUrl = '';
+      
+      // Upload CV to Firebase Storage if provided
       if (form.cv) {
         const cvRef = ref(storage, `cv/${form.cv.name}`);
+        console.log('Uploading CV:', form.cv.name);
         await uploadBytes(cvRef, form.cv);
+        console.log('CV uploaded successfully');
         cvUrl = await getDownloadURL(cvRef);
+        console.log('CV download URL:', cvUrl);
       }
   
       const formData = {
@@ -53,18 +58,39 @@ export default function MentorAdvisor() {
         advisor: form.advisor || false,
       };
   
-      await addDoc(collection(db, 'mentors_advisors'), formData);
+      console.log('Submitting form data:', formData);
   
+      // Add form data to Firestore
+      await addDoc(collection(db, 'mentors_advisors'), formData);
+      console.log('Form data added to Firestore');
+  
+      // Send form data to the server
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5174';
+      const response = await fetch(`${apiUrl}/submit-form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      console.log('Form data sent to server');
+  
+      // Reset form and navigate
       setForm(initialState);
       setCvFileName("Click To Upload");
       navigate("/thank-you");
     } catch (error) {
-      console.error("Error submitting form: ", error);
+      console.error("Error submitting form:", error);
       alert(`There was an error submitting the form: ${error.message}`);
     } finally {
       setLoading(false);
     }
-  };
+  };  
   
   
 

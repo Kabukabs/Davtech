@@ -47,8 +47,27 @@ export default function SkillCollab() {
         cv: cvUrl,
       });
 
-      setForm(initialState);
-      navigate('/thank-you');
+      // Submit the form data to your backend server
+      const response = await fetch('/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          experience: form.experience,
+          cvUrl,
+        }),
+      });
+
+      if (response.ok) {
+        setForm(initialState);
+        navigate('/thank-you');
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       console.error('Error submitting form: ', error);
       alert('There was an error submitting the form. Please try again.');
