@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import down from '../assets/down.png'
-import up from '../assets/up.png'
+import down from '../assets/down.png'; // Importing the down arrow image
+import up from '../assets/up.png'; // Importing the up arrow image
 
 const FAQ = () => {
-  const [openQuestionIndex, setOpenQuestionIndex] = useState(null);
+  const [openQuestionIndex, setOpenQuestionIndex] = useState(null); // State to track which question is open
 
+  // Function to toggle the open question
   const toggleQuestion = (index) => {
     setOpenQuestionIndex(openQuestionIndex === index ? null : index);
   };
 
+  // FAQ items with questions and answers
   const faqItems = [
     {
       question: 'What Services Do You Offer?',
@@ -42,30 +44,32 @@ const FAQ = () => {
 
   return (
     <div className="flex-col py-12 pt-24 overflow-hidden">
-      <div className="absolute bg-cyan-500 w-full z-0 left-0 right-0 h-72">
-      </div>
+      {/* Background color bar */}
+      <div className="absolute bg-cyan-500 w-full z-0 left-0 right-0 h-72"></div>
       <div className="relative z-10">
-      <h2 className="text-white text-3xl font-semibold text-center mb-8 p-11">FAQ</h2>
-      <div className="bg-[linear-gradient(307.39deg,#D1D4D6_4.73%,#C7EEFF_58.6%,#FFFFFF_98.92%)] py-12 rounded-lg shadow-lg p-8 mx-4 md:mx-auto max-w-screen-md">
-        {faqItems.map((item, index) => (
-          <div key={index} className="mb-4">
-            <button
-              className="w-full p-4 rounded-full bg-[rgba(252,254,255,0.65)] shadow-[0px_4px_4px_rgba(0,0,0,0.05)] focus:outline-none focus:ring-2 focus:ring-blue-600"
-              onClick={() => toggleQuestion(index)}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-semibold w-full text-center">{item.question}</span>
-                <span>{openQuestionIndex === index ? <img src={up}/> : <img src={down}/>}</span>
-              </div>
-            </button>
-            {openQuestionIndex === index && (
-              <div className="mt-2 p-4 text-left bg-[rgba(252,254,255,0.65)] shadow-[0px_4px_4px_rgba(0,0,0,0.05)] rounded-full font-semibold">
-                {item.answer}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+        {/* FAQ title */}
+        <h2 className="text-white text-3xl font-semibold text-center mb-8 p-11">FAQ</h2>
+        {/* FAQ items container */}
+        <div className="bg-[linear-gradient(307.39deg,#D1D4D6_4.73%,#C7EEFF_58.6%,#FFFFFF_98.92%)] py-12 rounded-lg shadow-lg p-8 mx-4 md:mx-auto max-w-screen-md">
+          {faqItems.map((item, index) => (
+            <div key={index} className="mb-4">
+              <button
+                className="w-full p-4 rounded-full bg-[rgba(252,254,255,0.65)] shadow-[0px_4px_4px_rgba(0,0,0,0.05)] focus:outline-none focus:ring-2 focus:ring-blue-600"
+                onClick={() => toggleQuestion(index)}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold w-full text-center">{item.question}</span>
+                  <span>{openQuestionIndex === index ? <img src={up} alt="up arrow" /> : <img src={down} alt="down arrow" />}</span>
+                </div>
+              </button>
+              {openQuestionIndex === index && (
+                <div className="mt-2 p-4 text-left bg-[rgba(252,254,255,0.65)] shadow-[0px_4px_4px_rgba(0,0,0,0.05)] rounded-full font-semibold">
+                  {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
