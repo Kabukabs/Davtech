@@ -15,6 +15,7 @@ const initialState = {
 export default function SkillCollab() {
   const [form, setForm] = useState(initialState);
   const [cvFileName, setCvFileName] = useState('Click To Upload');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -30,6 +31,7 @@ export default function SkillCollab() {
 
   const submitForm = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     try {
       let cvUrl = '';
@@ -48,7 +50,9 @@ export default function SkillCollab() {
       });
 
       // Submit the form data to your backend server
-      const response = await fetch('/submit-form', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      const response = await fetch(`${apiUrl}/submit-form`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,6 +75,8 @@ export default function SkillCollab() {
     } catch (error) {
       console.error('Error submitting form: ', error);
       alert('There was an error submitting the form. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -206,7 +212,8 @@ export default function SkillCollab() {
           <div className="md:w-2/3">
             <input
               type="submit"
-              value="Submit"
+              value={loading ? 'Submitting...' : 'Submit'}
+              disabled={loading}
               className="shadow bg-blue mt-4 text-white font-bold py-2 px-4 rounded cursor-pointer"
             />
           </div>
