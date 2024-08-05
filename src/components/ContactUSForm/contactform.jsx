@@ -6,7 +6,6 @@ const initialState = {
   email: "",
   message: "",
 };
-const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY
 export default function ContactUsForm() {
   const [form, setForm] = useState(initialState);
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -32,7 +31,9 @@ export default function ContactUsForm() {
     }
 
     emailjs
-      .sendForm('service_cjx0wxe', 'template_evb8bo7', formRef.current, import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+      .sendForm('service_cjx0wxe', 'template_evb8bo7', formRef.current, {
+        publicKey: 'DPzMJ9yxiCT6adfIN',
+      })
       .then((result) => {
           setSuccess(true);
           setError(false);
@@ -48,7 +49,7 @@ export default function ContactUsForm() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit ={sendEmail} ref={formRef}className="w-full max-w-[600px] mt-10">
+      <form onSubmit ={sendEmail} ref={formRef}className="w-full max-w-[600px]">
        <div className="mb-4">
         <input 
         onChange={(event) => handleChange(event)}
@@ -57,7 +58,7 @@ export default function ContactUsForm() {
         name="name"
         required
         placeholder="Name"
-        class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-black-500"
+        class=" appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
         />
         </div> 
         <div className="mb-6 mt-10">
@@ -68,34 +69,34 @@ export default function ContactUsForm() {
             placeholder="Email Address"
             value = {form.email}
             required
-            class=" appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-black-500"/>
+            class=" appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"/>
         </div>
         <div className="mb-4 mt-10 ml-10">
-            <p className="text-[15px] ml-4"> <strong>Please enter the email address where you wish to receive our answer. If you are a registered member of DavTechinvest, please include the email address you used when you registered if possible to help us locate your account as soon as possible. </strong></p>
+            <p className="text-[15px]"> <strong>Please enter the email address where you wish to receive our answer. If you are a registered member of DavTechinvest, please include the email address you used when you registered if possible to help us locate your account as soon as possible. </strong></p>
         </div>
-        <div className="ml-8">
+        <div>
             <textarea
             onChange={(event) => handleChange(event)}
             name = "message"
             placeholder="Message"
             value = {form.message}
-            className="   appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-black-500"
+            class=" mb-4 ml-10 appearance-none border-2 border-black-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
               id="inline-experience"
-              rows="8"
+              rows="5"
               cols="50"
               required/>
         </div>
-        <div className="mb-4 ml-14 flex">
-          <ReCAPTCHA className="mt-10"
-            sitekey= {recaptchaKey}// Replace with your reCAPTCHA site key
+        <div className="mb-4 ml-10 flex">
+          <ReCAPTCHA
+            sitekey="6LftdhwqAAAAADcfG8owy9QpSc-B6yoKmbmLpLeA" // Replace with your reCAPTCHA site key
             onChange={handleCaptchaChange}
           />
         </div>
-        <div className="mb-4 flex justify-end">
+        <div className="mb-4 text-center">
             <input
             type="submit"
             value="submit"
-            className="bg-purple-500 hover:bg-purple-700 text-white  py-2 px-4 "></input>
+            className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"></input>
             {error && <p className="text-red-500 mt-2">Error occured while sending the message. Please try again</p>}
             {success && <p className="text-green-500 mt-2">Message sent successfully!</p>}
         </div>
