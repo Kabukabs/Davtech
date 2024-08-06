@@ -33,60 +33,106 @@ export default function SkillCollab() {
     setCvFileName(files[0] ? files[0].name : 'Click To Upload');
   };
 
-  // Handle form submission
   const submitForm = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    setLoading(true); // Set loading state to true
-
+    event.preventDefault();
+    setLoading(true);
+  
     try {
       let cvUrl = '';
-      // Upload CV file if provided
       if (form.cv) {
-        const cvRef = ref(storage, `cv/${form.cv.name}`);
-        await uploadBytes(cvRef, form.cv);
-        cvUrl = await getDownloadURL(cvRef);
-      }
-
-      // Add form data to Firestore collection
-      await addDoc(collection(db, 'skill_collaborators'), {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        experience: form.experience,
-        cv: cvUrl,
-      });
-
-      // Submit the form data to your backend server
-      const apiUrl = import.meta.env.VITE_API_URL;
-
-      const response = await fetch(`${apiUrl}/submit-form`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        const reader = new FileReader();
+        reader.readAsDataURL(form.cv);
+        reader.onloadend = async () => {
+          const base64data = reader.result.split(',')[1];
+          const response = await fetch('https://your-region-your-project-id.cloudfunctions.net/uploadFile', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: form.cv.name,
+              data: base64data,
+            }),
+          });
+  
+          if (response.ok) {
+            const data = await response.json();
+            cvUrl = data.url;
+  
+            await addDoc(collection(db, 'skill_collaborators'), {
+              name: form.name,
+              email: form.email,
+              phone: form.phone,
+              experience: form.experience,
+              cv: cvUrl,
+            });
+  
+            const apiUrl = import.meta.env.VITE_API_URL;
+  
+            const apiResponse = await fetch(`${apiUrl}/submit-form`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name: form.name,
+                email: form.email,
+                phone: form.phone,
+                experience: form.experience,
+                cvUrl,
+              }),
+            });
+  
+            if (apiResponse.ok) {
+              setForm(initialState);
+              navigate('/thank-you');
+            } else {
+              throw new Error('Form submission failed');
+            }
+          } else {
+            throw new Error('File upload failed');
+          }
+        };
+      } else {
+        await addDoc(collection(db, 'skill_collaborators'), {
           name: form.name,
           email: form.email,
           phone: form.phone,
           experience: form.experience,
-          cvUrl,
-        }),
-      });
-
-      // Check response from the server
-      if (response.ok) {
-        setForm(initialState);
-        navigate('/thank-you');
-      } else {
-        throw new Error('Form submission failed');
+          cv: cvUrl,
+        });
+  
+        const apiUrl = import.meta.env.VITE_API_URL;
+  
+        const response = await fetch(`${apiUrl}/submit-form`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            phone: form.phone,
+            experience: form.experience,
+            cvUrl,
+          }),
+        });
+  
+        if (response.ok) {
+          setForm(initialState);
+          navigate('/thank-you');
+        } else {
+          throw new Error('Form submission failed');
+        }
       }
     } catch (error) {
       console.error('Error submitting form: ', error);
       alert('There was an error submitting the form. Please try again.');
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen w-full p-4 bg-babyblue">

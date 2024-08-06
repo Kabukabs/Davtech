@@ -70,7 +70,8 @@ export default function MentorAdvisor() {
       console.log('Form data added to Firestore');
 
       // Send form data to the server
-      const response = await fetch('/submit-form', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiUrl}/submit-form`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
