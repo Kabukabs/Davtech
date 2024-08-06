@@ -23,6 +23,8 @@ module.exports = {
       colors: {
         darkblue: "#00008b",
         babyblue: "#89CFF0",
+        lightblue:"#C7EEFF",
+        whitethick:"#FAFAFA",
         blue:"#007AFF",
         grey:"#D9D9D9",
         surfaceWhite:"#FAFBF9",

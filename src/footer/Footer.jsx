@@ -11,7 +11,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { subSchema } from '../lib/schemas/subscribe';
+import { subSchema } from '../lib/schemas';
 import { FooterLinks } from '../lib/constants/footer';
 import { Text } from '../components/ui/custom-ui/text';
 
@@ -29,8 +29,8 @@ export const Footer = () => {
 
   return (
     <footer className="mt-auto lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:p-12 p-4 py-8 bg-mediumgrey w-full">
-      <div classname="max-w-[1540px] flex flex-col gap-4">
-        <nav className="grid md:grid-cols-3 grid-cols-1 md:gap-12 gap-8 ">
+      <div className="max-w-[1540px] flex flex-col gap-4">
+        <nav className="grid md:grid-cols-3 grid-cols-1 md:gap-12 gap-8">
           {FooterLinks.map((links, index) => (
             <div key={index} className="flex flex-col gap-2">
               <Text
@@ -45,7 +45,7 @@ export const Footer = () => {
                   <Link
                     key={index}
                     to={item.routes}
-                    className="md:text-lg text-sm w-fit"
+                    className="md:text-md text-sm w-fit"
                   >
                     {item.title}
                   </Link>
@@ -53,7 +53,7 @@ export const Footer = () => {
                   <Text
                     key={index}
                     as="h4"
-                    style="md:text-lg text-sm"
+                    style="md:text-md text-sm"
                   >
                     {item.title}
                   </Text>
