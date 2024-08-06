@@ -26,6 +26,7 @@ export const ModalWrapper = ({
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
+      //Prevent modal from closing once its clicked elsewhere apart from the close button
         onInteractOutside={(e) => e.preventDefault()}
         className={`${bigscreenwidth ? bigscreenwidth : 'sm:max-w-[425px]'} ${
           scrollable ? 'overflow-y-scroll max-h-screen' : null

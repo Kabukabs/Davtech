@@ -9,13 +9,17 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { useEffect, useState } from 'react';
 
 export const Projects = () => {
+  // Set Active Tab name as all
   const [activeCategory, setActiveCategory] = useState('all');
+   // Set Active Tab data as api
   const [tabProjectJson, setTabProjectJson] = useState(ProjectsJson);
 
+   // Update Active Tab View
   const handleSetActiveCategory = (category) => {
     setActiveCategory(category);
   };
 
+  // Update the active category data, once the active category name changes 
   useEffect(() => {
     const setActiveTabData = () => {
       if (activeCategory === 'all') {

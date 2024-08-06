@@ -95,7 +95,7 @@ export const ApplyForJob = () => {
                 handleUpload={(e) => console.log(e)}
                 style={'w-full'}
               >
-                <div className="border rounded-md p-4 w-full flex items-center justify-center">
+                <div className="border rounded-md p-4 py-8 w-full flex items-center justify-center">
                   <img
                     src={camera}
                     alt="object not found"

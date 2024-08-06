@@ -13,6 +13,7 @@ export const IconInput = ({
     <div className="relative">
       <span className="absolute top-[0.7rem] left-[0.5rem] z-50">{icon}</span>
       <span>
+      {/*Check if its a standalone input or form input and return the appropraite input type*/}
         {category === 'formInput' ? (
           <Input
             required

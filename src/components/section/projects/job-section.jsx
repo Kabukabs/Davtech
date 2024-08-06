@@ -26,7 +26,7 @@ export const Job_Section = ({ jobs }) => {
                 </div>
                 <ModalWrapper
                   trigger={
-                    <div className="bg-blue text-white p-4 text-sm">Apply</div>
+                    <div className="bg-blue text-white p-4 text-sm cursor-pointer">Apply</div>
                   }
                 >
                   <ApplyForJob />
