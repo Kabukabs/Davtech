@@ -34,102 +34,64 @@ export default function SkillCollab() {
   };
 
   const submitForm = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-  
+    event.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Set loading state to true
+
     try {
       let cvUrl = '';
+      // Upload CV file if provided
       if (form.cv) {
-        const reader = new FileReader();
-        reader.readAsDataURL(form.cv);
-        reader.onloadend = async () => {
-          const base64data = reader.result.split(',')[1];
-          const response = await fetch('https://your-region-your-project-id.cloudfunctions.net/uploadFile', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: form.cv.name,
-              data: base64data,
-            }),
-          });
-  
-          if (response.ok) {
-            const data = await response.json();
-            cvUrl = data.url;
-  
-            await addDoc(collection(db, 'skill_collaborators'), {
-              name: form.name,
-              email: form.email,
-              phone: form.phone,
-              experience: form.experience,
-              cv: cvUrl,
-            });
-  
-            const apiUrl = import.meta.env.VITE_API_URL;
-  
-            const apiResponse = await fetch(`${apiUrl}/submit-form`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                name: form.name,
-                email: form.email,
-                phone: form.phone,
-                experience: form.experience,
-                cvUrl,
-              }),
-            });
-  
-            if (apiResponse.ok) {
-              setForm(initialState);
-              navigate('/thank-you');
-            } else {
-              throw new Error('Form submission failed');
-            }
-          } else {
-            throw new Error('File upload failed');
-          }
-        };
-      } else {
-        await addDoc(collection(db, 'skill_collaborators'), {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          experience: form.experience,
-          cv: cvUrl,
-        });
-  
-        const apiUrl = import.meta.env.VITE_API_URL;
-  
-        const response = await fetch(`${apiUrl}/submit-form`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            experience: form.experience,
-            cvUrl,
-          }),
-        });
-  
-        if (response.ok) {
-          setForm(initialState);
-          navigate('/thank-you');
-        } else {
-          throw new Error('Form submission failed');
-        }
+        const cvRef = ref(storage, `cv/${form.cv.name}`);
+        console.log('Uploading CV:', form.cv.name);
+        await uploadBytes(cvRef, form.cv);
+        console.log('CV uploaded successfully');
+        cvUrl = await getDownloadURL(cvRef);
+        console.log('CV download URL:', cvUrl);
       }
+
+      // Prepare form data for Firestore
+      const formData = {
+        name: form.name || "",
+        email: form.email || "",
+        phone: form.phone || "",
+        experience: form.experience || "",
+        cv: cvUrl || "",
+        mentor: form.mentor || false,
+        advisor: form.advisor || false,
+      };
+
+      console.log('Submitting form data:', formData);
+
+      // Add form data to Firestore collection
+      await addDoc(collection(db, 'mentors_advisors'), formData);
+      console.log('Form data added to Firestore');
+
+      // Send form data to the server
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${apiUrl}/submit-form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // Check response from the server
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      console.log('Form data sent to server');
+
+      // Reset form state and navigate to thank-you page
+      setForm(initialState);
+      setCvFileName("Click To Upload");
+      navigate("/thank-you");
     } catch (error) {
-      console.error('Error submitting form: ', error);
-      alert('There was an error submitting the form. Please try again.');
+      console.error("Error submitting form: ", error);
+      alert(`There was an error submitting the form: ${error.message}`);
     } finally {
-      setLoading(false);
+      setLoading(false); // Reset loading state
     }
   };
   
