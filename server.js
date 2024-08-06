@@ -119,7 +119,7 @@ const sendEmail = async (data, pdfBuffer) => {
 };
 
 // Start the server
-const PORT = process.env.VITE_PORT; // Port to listen on
+const PORT = process.env.VITE_PORT || 5174 || 5173; // Port to listen on
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the server start
 });
