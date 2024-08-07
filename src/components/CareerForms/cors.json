@@ -1,8 +1,8 @@
 [
   {
-    "origin": ["http://localhost:5174"], //Replace 'http://localhost:5174' with the developer's own localhost URL if different.
-    "method": ["GET", "POST", "PUT"],
-    "maxAgeSeconds": 3600
+    "origin": ["*"],  // Allowed origin(s) for cross-origin requests. Replace 'http:localhost:5174' with the developer's own localhost URL if different.
+    "method": ["GET", "POST", "PUT"],     // HTTP methods allowed for cross-origin requests
+    "maxAgeSeconds": 3600                 // Maximum time (in seconds) that the results of a preflight request can be cached
   }
 ]
  

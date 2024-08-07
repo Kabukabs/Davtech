@@ -1,4 +1,3 @@
-// Import required modules
 const express = require('express'); // Express framework for building web applications
 const cors = require('cors');       // Middleware for handling CORS (Cross-Origin Resource Sharing)
 const bodyParser = require('body-parser'); // Middleware for parsing request bodies
@@ -25,10 +24,10 @@ const app = express(); // Create an instance of Express
 
 // Enable CORS
 app.use(cors({
-  origin: '*', // Allow all origins (adjust as needed for security)
-  methods: ['GET', 'POST', 'PUT'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  maxAge: 3600 // Cache preflight request results for 3600 seconds
+  origin: ['http://localhost:9000'], // Update with your localhost URL if different
+  methods: ['GET', 'POST', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  maxAge: 3600
 }));
 
 // Middleware to parse URL-encoded and JSON request bodies
@@ -50,9 +49,11 @@ app.post('/submit-form', async (req, res) => {
 
     // Generate PDF from form data
     const pdfBuffer = await generatePDF(formData); // Generate PDF and get it as a buffer
+    console.log('PDF generated'); // Log PDF generation
 
     // Send PDF via email
     await sendEmail(formData, pdfBuffer); // Send email with the form data and PDF attachment
+    console.log('Email sent'); // Log email sending
 
     res.status(200).send('Form submitted successfully!'); // Send success response
   } catch (error) {
@@ -119,7 +120,7 @@ const sendEmail = async (data, pdfBuffer) => {
 };
 
 // Start the server
-const PORT = process.env.VITE_PORT; // Port to listen on
+const PORT = process.env.VITE_PORT || 5174 || 5173 || 9000; // Port to listen on
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the server start
 });
