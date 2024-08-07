@@ -69,23 +69,6 @@ export default function MentorAdvisor() {
       await addDoc(collection(db, 'mentors_advisors'), formData);
       console.log('Form data added to Firestore');
 
-      // Send form data to the server
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${apiUrl}/submit-form`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      // Check response from the server
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      console.log('Form data sent to server');
-
       // Reset form state and navigate to thank-you page
       setForm(initialState);
       setCvFileName("Click To Upload");
