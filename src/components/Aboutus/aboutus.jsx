@@ -1,8 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import img1 from '../../assets/img1.png'; // Importing images for the page
+import React from 'react'; // Import React
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for routing
+import img1 from '../../assets/img1.png'; // Importing images for the hero section
 import FAQ from '../../components/FAQ.jsx'; // Importing FAQ component
-import app from '../../assets/app.png';
+import app from '../../assets/app.png'; // Importing images for service items
 import cloud from '../../assets/cloud.png';
 import analytics from '../../assets/analytics.png';
 import analysis from '../../assets/analysis.png';
@@ -23,7 +23,7 @@ export default function AboutUsPage() {
         {/* Hero section */}
         <section className="flex flex-col items-center md:flex-row md:items-start">
           <img
-            src={img1}
+            src={img1} // Image for the hero section
             alt="Tech Illustration"
             className="w-3/4 md:w-1/2 lg:w-1/3 mb-6 md:mr-32 md:mb-0"
           />
@@ -56,27 +56,27 @@ export default function AboutUsPage() {
           <div className="flex flex-wrap justify-center space-x-4 space-y-4 md:space-x-6 lg:space-x-8 gap-12">
             {/* Service items */}
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl flex-shrink-0 mt-4">
-              <img src={app} alt="App Development" className="h-12 mb-2"/>
+              <img src={app} alt="App Development" className="h-12 mb-2"/> {/* App development image */}
               App Development
             </span>
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={cloud} alt="Cloud Based Solution" className="h-12 mb-2"/>
+              <img src={cloud} alt="Cloud Based Solution" className="h-12 mb-2"/> {/* Cloud based solution image */}
               Cloud Based Solution
             </span>
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={analytics} alt="Data Analytics" className="h-12 mb-2"/>
+              <img src={analytics} alt="Data Analytics" className="h-12 mb-2"/> {/* Data analytics image */}
               Data Analytics
             </span>
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={development} alt="Web 3 Development" className="h-12 mb-2"/>
+              <img src={development} alt="Web 3 Development" className="h-12 mb-2"/> {/* Web 3 development image */}
               Web 3 Development
             </span>
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={analysis} alt="Industrial Analysis" className="h-12 mb-2"/>
+              <img src={analysis} alt="Industrial Analysis" className="h-12 mb-2"/> {/* Industrial analysis image */}
               Industrial Analysis
             </span>
             <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={career} alt="Career Development" className="h-12 mb-2"/>
+              <img src={career} alt="Career Development" className="h-12 mb-2"/> {/* Career development image */}
               Career Development
             </span>
           </div>

@@ -1,3 +1,4 @@
+// Importing required modules
 const express = require('express'); // Express framework for building web applications
 const cors = require('cors');       // Middleware for handling CORS (Cross-Origin Resource Sharing)
 const bodyParser = require('body-parser'); // Middleware for parsing request bodies
@@ -62,7 +63,13 @@ app.post('/submit-form', async (req, res) => {
   }
 });
 
-// Function to generate PDF from form data
+/**
+ * Generates a PDF document from the provided form data.
+ *
+ * @param {Object} data - The form data to include in the PDF.
+ * @return {Promise<Buffer>} - A promise that resolves to a buffer containing the PDF data.
+ * @throws {Error} - Throws an error if PDF generation fails.
+ */
 const generatePDF = (data) => {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument(); // Create a new PDF document
@@ -85,7 +92,14 @@ const generatePDF = (data) => {
   });
 };
 
-// Function to send email with form data and PDF attachment
+/**
+ * Sends an email with the provided form data and PDF attachment.
+ *
+ * @param {Object} data - The form data to include in the email.
+ * @param {Buffer} pdfBuffer - The PDF buffer to attach to the email.
+ * @return {Promise<void>} - A promise that resolves when the email has been sent.
+ * @throws {Error} - Throws an error if sending the email fails.
+ */
 const sendEmail = async (data, pdfBuffer) => {
   try {
     console.log('Setting up email transporter...'); // Log email setup

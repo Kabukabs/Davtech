@@ -6,20 +6,20 @@ import { collection, addDoc } from 'firebase/firestore'; // Import Firestore fun
 
 // Initial state for the form
 const initialState = {
-  name: "",
-  email: "",
-  phone: "",
-  experience: "",
-  cv: null,
-  mentor: false,
-  advisor: false,
+  name: "", // User's name
+  email: "", // User's email address
+  phone: "", // User's phone number
+  experience: "", // User's experience description
+  cv: null, // User's CV file
+  mentor: false, // Boolean indicating if the user wants to be a mentor
+  advisor: false, // Boolean indicating if the user wants to be an advisor
 };
 
 export default function MentorAdvisor() {
   // State hooks for form data, file name display, and loading status
-  const [form, setForm] = useState(initialState);
-  const [cvFileName, setCvFileName] = useState("Click To Upload");
-  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState(initialState); // State to manage form data
+  const [cvFileName, setCvFileName] = useState("Click To Upload"); // State for displaying the CV file name
+  const [loading, setLoading] = useState(false); // State to manage loading status
   const navigate = useNavigate(); // Hook for programmatic navigation
 
   // Handle changes to form fields
@@ -41,14 +41,14 @@ export default function MentorAdvisor() {
     setLoading(true); // Set loading state to true
 
     try {
-      let cvUrl = '';
+      let cvUrl = ''; // Variable to store CV download URL
       // Upload CV file if provided
       if (form.cv) {
-        const cvRef = ref(storage, `cv/${form.cv.name}`);
+        const cvRef = ref(storage, `cv/${form.cv.name}`); // Reference to Firebase Storage
         console.log('Uploading CV:', form.cv.name);
-        await uploadBytes(cvRef, form.cv);
+        await uploadBytes(cvRef, form.cv); // Upload file to Firebase Storage
         console.log('CV uploaded successfully');
-        cvUrl = await getDownloadURL(cvRef);
+        cvUrl = await getDownloadURL(cvRef); // Get the download URL for the uploaded file
         console.log('CV download URL:', cvUrl);
       }
 
