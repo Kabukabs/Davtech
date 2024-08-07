@@ -9,7 +9,7 @@ export const NavBar = () => {
   const navRef = useRef(null);
   return (
     <header className="w-full my-0">
-      <nav className="max-w-[1540px] m-auto w-full flex md:flex-row flex-col md:items-center items-start md:gap-[8rem] gap-8 m-auto md:px-[2rem] xl:px-[8rem] md:py-[1rem] py-[0.5rem] px-[1rem] border-b-4 border-b-[ghostwhite] navBg">
+      <nav className="max-w-[1540px] m-auto w-full flex md:flex-row flex-col md:items-center items-start md:gap-[8rem] gap-0 md:px-[2rem] xl:px-[8rem] md:py-[1rem] py-[0.5rem] px-[1rem] border-b-4 border-b-[ghostwhite] navBg">
         <div className="md:w-fit w-full flex justify-between items-center">
           <AppLogo />
           <div className="md:hidden block">
@@ -26,7 +26,7 @@ export const NavBar = () => {
         </div>
         <ul
           ref={navRef}
-          className="navRef md:flex-row flex-col md:items-center items-start bg-surfaceWhite md:bg-white p-4 rounded gap-4 justify-between lg:w-[55%] w-full"
+          className="navRef md:flex-row flex-col md:items-center items-start bg-surfaceWhite md:bg-white rounded gap-4 justify-between lg:w-[55%] w-full"
         >
           {Pageroutes.map((route, index) => (
             <li key={index}>
@@ -35,7 +35,7 @@ export const NavBar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? 'text-blue border-blue border-b-2 font-semibold text-[15px]'
-                    : 'text-darkgrey font-semibold text-none text-[15px] '
+                    : 'text-darkgrey font-semibold text-none text-[15px]'
                 }
               >
                 {route.title}

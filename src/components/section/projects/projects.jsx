@@ -1,109 +1,178 @@
-import { AiOutlineCaretDown, AiOutlineFilter } from 'react-icons/ai';
 import { Text } from '../../ui/custom-ui/text';
-import { CompletedProjectCard } from './completed-project.card';
-import { OngoingProjectCard } from './ongoing-project.card';
-import { FutureProjectCard } from './future-project.card';
-import { useNavigate } from 'react-router-dom';
-import { DropdownLayout } from '../../ui/custom-ui/dropdown-layout';
-import { Tag } from './tag';
-export const Projects = () => {
-  const navigate = useNavigate();
-  const navigateWithQuery = (query) => navigate(`/projects?${query}`);
-  const ByStatusMenu = [
-    {
-      title: 'Ongoing',
-      action: () => navigateWithQuery('status=ongoing'),
-    },
-    {
-      title: 'Completed',
-      action: () => navigateWithQuery('status=completed'),
-    },
-  ];
+import { IconInput } from '../../ui/custom-ui/icon-input';
+import { SearchNormal } from 'iconsax-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Pagination } from '../../common/pagination';
+import { ProjectCard } from './project-card';
+import { ProjectsJson } from '../../../lib/constants/project';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { useEffect, useState } from 'react';
 
-  const ByRoleMenu = [
-    {
-      title: 'Role1',
-      action: () => navigateWithQuery('role=1'),
-    },
-    {
-      title: 'Role2',
-      action: () => navigateWithQuery('role=2'),
-    },
-  ];
+export const Projects = () => {
+  // Set Active Tab name as all
+  const [activeCategory, setActiveCategory] = useState('all');
+   // Set Active Tab data as api
+  const [tabProjectJson, setTabProjectJson] = useState(ProjectsJson);
+
+   // Update Active Tab View
+  const handleSetActiveCategory = (category) => {
+    setActiveCategory(category);
+  };
+
+  // Update the active category data, once the active category name changes 
+  useEffect(() => {
+    const setActiveTabData = () => {
+      if (activeCategory === 'all') {
+        setTabProjectJson(ProjectsJson);
+      } else {
+        const filteredByCategory = ProjectsJson.filter(
+          (project) => project.category.toLocaleLowerCase() === activeCategory.toLocaleLowerCase()
+        );
+        setTabProjectJson(filteredByCategory);
+      }
+    };
+
+    setActiveTabData();
+  }, [activeCategory]);
+
   return (
-    <div className="max-w-[1540px] md:gap-8 gap-4 lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:pb-[4rem] p-4 font-medium">
-      <div className="flex items-end justify-between flex-wrap">
+    <div className="max-w-[1540px] flex flex-col justify-center gap-4 lg:px-[6rem] xl:px-[12rem] md:px-[4rem] md:pb-[4rem] p-4 font-medium">
+      <figure className="md:w-[60%] w-full m-auto relative">
         <div className="w-full">
-          <Text as="h1" style="text-4xl font-extrabold">
+          <img
+            src="/project_img1.svg"
+            alt="object not found"
+            className="w-full"
+          />
+        </div>
+        <figcaption className="absolute m-auto left-[10%] right-[10%] md:left-[20%] md:right-[20%] bottom-[1rem]">
+          <Text
+            as="h1"
+            style="lg:text-5xl md:text-4xl text-xl font-extrabold text-center mb-2 text-white"
+          >
             PROJECTS
           </Text>
-          <div className="flex flex-wrap justify-between items-center w-full mb-8">
-            <Text as="h4" style="md:text-lg font-semibold text-sm">
-              Dive into Our Ongoing innovations
+          <div className="p-2 rounded-lg text-white blur-bg">
+            <Text as="h6" style="text-center text-white text-xs">
+              You can now add a project for collaborators or join an existing
+              project as a collaborator. Click here to add a project or view
+              available projects for collaboration.
             </Text>
-            <div className="flex gap-4 flex-wrap items-center">
-              <DropdownLayout
-                menu={ByStatusMenu}
-                trigger={
-                  <div className="flex gap-2 items-center">
-                    By Status <AiOutlineCaretDown size="1rem" />{' '}
-                  </div>
-                }
-              />
-              <DropdownLayout
-                menu={ByRoleMenu}
-                trigger={
-                  <div className="flex gap-2 items-center">
-                    By Role <AiOutlineCaretDown size="1rem" />
-                  </div>
-                }
-              />
-              <AiOutlineFilter size="1rem" />
-            </div>
           </div>
-        </div>
+        </figcaption>
+      </figure>
+      <div className="m-auto">
+        <IconInput
+          icon={<SearchNormal size="20" color="black" />}
+          placeHolder
+          handleChange={(e) => console.log(e.target.value)}
+          type={'text'}
+          style="shadow drop-shadow-md bg-whitethick"
+        />
       </div>
-      <div>
-        {/*Completed projects**/}
-        <div>
-          <CompletedProjectCard
-            title={'DAVTECHINVEST PROJECT'}
-            info={
-              'we harness the power of cutting-edge technology to transform the way businesses understand and engage with their customers. Our team of experts specializes in software development, data collection, analysis, and observing business patterns to create actionable insights for investors'
-            }
-            contributors={'71'}
-            start_date={'4th July, 2023'}
-            end_date={'11 June, 2024'}
-            img={'/project_img1.svg'}
-          />
-          <Tag title="Completed project" align={'right'} />
+      <Tabs defaultValue="All" className="w-full">
+        <div className="flex-col justify-between items-center flex md:flex-row flex-col-reverse">
+          <ScrollArea className="w-full whitespace-nowrap">
+            <TabsList className="justify-center items-center flex border rounded divide-x-2 w-fit m-auto h-fit bg-white my-8">
+              <TabsTrigger
+                value="All"
+                onClick={()=>handleSetActiveCategory('all')}
+                className="px-8 py-2 rounded-none data-[state=active]:bg-[ghostwhite] text-black text-center w-full"
+              >
+                All
+              </TabsTrigger>
+              <TabsTrigger
+                value="ONGOING"
+                onClick={()=>handleSetActiveCategory('ongoing')}
+                className="px-8 py-2 rounded-none data-[state=active]:bg-[ghostwhite] text-black text-center w-full"
+              >
+                ONGOING
+              </TabsTrigger>
+              <TabsTrigger
+                value="FUTURE"
+                onClick={()=>handleSetActiveCategory('future')}
+                className="px-8 py-2 rounded-none data-[state=active]:bg-[ghostwhite] text-black text-center w-full flex flex-col justify-center items-center"
+              >
+                FUTURE
+              </TabsTrigger>
+              <TabsTrigger
+                value="COMPLETED"
+                onClick={()=>handleSetActiveCategory('completed')}
+                className="px-8 py-2  rounded-none data-[state=active]:bg-[ghostwhite] text-black text-center w-full"
+              >
+                COMPLETED
+              </TabsTrigger>
+            </TabsList>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
         </div>
-        <div className="grid gap-12 md:grid-cols-2 grid-cols-1">
-          {/*Ongoing projects**/}
-          <div>
-            <Tag title="Ongoing project" />
-            <OngoingProjectCard
-              title={'KABUKABZ PROJECT'}
-              info={
-                'It is a transport projrct that deals with the real-time of drivers and passengers in a particular region. It calculates the number of passengers for a driver in a bus-stop and tells the passenger  that there is an upcoming vehicle ahead or behind them.'
-              }
-              contributors={'10'}
-              start_date={'10th Octoober, 2024'}
-              in_progress={'Ongoing'}
-              img={'/project_img1.svg'}
-            />
+        <TabsContent value="All">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
+            {tabProjectJson.map((project, index) => (
+              <ProjectCard
+                key={index}
+                category={project.category}
+                name={project.name}
+                img={project.img}
+                start_date={project.start_date}
+                progress={project.progress}
+                compensation={project.compensation}
+                overview={project.overview}
+              />
+            ))}
           </div>
-          {/*Future projects**/}
-          <div>
-            <Tag title="Future project" />
-            <FutureProjectCard
-              project_name={'agricultural project'}
-              start_date={'4th februuary 2025'}
-              img={'/project_img1.svg'}
-            />
+        </TabsContent>
+        <TabsContent value="ONGOING">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
+            {tabProjectJson.map((project, index) => (
+              <ProjectCard
+                key={index}
+                category={project.category}
+                name={project.name}
+                img={project.img}
+                start_date={project.start_date}
+                progress={project.progress}
+                compensation={project.compensation}
+                overview={project.overview}
+              />
+            ))}
           </div>
-        </div>
-      </div>
+        </TabsContent>
+        <TabsContent value="FUTURE">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
+            {tabProjectJson.map((project, index) => (
+              <ProjectCard
+                key={index}
+                category={project.category}
+                name={project.name}
+                img={project.img}
+                start_date={project.start_date}
+                progress={project.progress}
+                compensation={project.compensation}
+                overview={project.overview}
+              />
+            ))}
+          </div>
+        </TabsContent>
+        <TabsContent value="COMPLETED">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
+            {tabProjectJson.map((project, index) => (
+              <ProjectCard
+                key={index}
+                category={project.category}
+                name={project.name}
+                img={project.img}
+                start_date={project.start_date}
+                progress={project.progress}
+                compensation={project.compensation}
+                overview={project.overview}
+              />
+            ))}
+          </div>
+        </TabsContent>
+      </Tabs>
+
+      <Pagination />
     </div>
   );
 };
