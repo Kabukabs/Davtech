@@ -12,6 +12,7 @@
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@react-spring/web": "^9.7.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -25,9 +26,10 @@
     "express": "^4.19.2",
     "firebase": "^10.12.5",
     "firebase-admin": "^12.3.0",
+    "framer-motion": "^11.3.24",
     "hamburger-react": "^2.5.1",
-    "jspdf": "^2.5.1",
     "iconsax-react": "^0.0.8",
+    "jspdf": "^2.5.1",
     "lucide-react": "^0.408.0",
     "nodemailer": "^6.9.14",
     "pdf-lib": "^1.17.1",
@@ -37,9 +39,11 @@
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.52.1",
     "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.13.0",
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.7.4",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "vite": "^5.3.3",
@@ -54,10 +58,10 @@
     "tailwindcss": "^3.4.5"
   },
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "serve": "vite preview"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

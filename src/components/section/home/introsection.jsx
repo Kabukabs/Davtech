@@ -5,18 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 export const Introsection = () => {
   //const {showToast } = useAppContext();
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const handleClick = () => {
     //showToast(<div>Hello, toast here!</div>);
     navigate('/contact us');
   };
+
   return (
     <div className="max-w-[1540px] grid md:grid-cols-2 grid-cols-1 lg:gap-[10rem] md:gap-[5rem] gap-4 md:py-[2rem] xl:px-[14rem] md:px-[4rem] px-4 py-[3rem]">
-      <div className="w-full ">
+      <div className="w-full animate-fadeInLeft">
         <img src="/intro-hero.svg" alt="object not found" className="w-full" />
       </div>
-      <div className="flex flex-col md:gap-[3rem] gap-[2rem] md:order-none order-first">
-        <div>
+      <div className="flex flex-col md:gap-[3rem] gap-[2rem] md:order-none order-first animate-fadeInRight">
+        <div className="animate-fadeInUp">
           <Text
             as="h2"
             style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
@@ -48,7 +49,7 @@ export const Introsection = () => {
             SOLUTIONS
           </Text>
         </div>
-        <div>
+        <div className="animate-fadeInUp">
           <Text
             as="h4"
             style="md:text-xl text-lg font-semibold lg:w-[75%] w-full"
@@ -57,14 +58,12 @@ export const Introsection = () => {
           </Text>
         </div>
         <div className="grid grid-cols-2">
-          <Button 
+          <Button
             onClick={handleClick}
-            className="text-blue border border-blue bg-[#F9FEFF] md:text-xl text-md font-semibol py-[1.5rem] rounded">
+            className="text-blue border border-blue bg-[#F9FEFF] md:text-xl text-md font-semibol py-[1.5rem] rounded animate-fadeInUp"
+          >
             Contact Us
           </Button>
-          {/* <Button className="text-white border bg-blue border border-blue md:text-xl text-md font-semibold py-[1.5rem] rounded mr-[-0.3rem]">
-            Contact Us
-          </Button> */}
         </div>
       </div>
     </div>
