@@ -1,8 +1,9 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import img1 from '../../assets/img1.png'; // Importing images for the page
+import React from 'react'; // Import React
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for routing
+import { motion } from 'framer-motion'; // Import framer-motion for animations
+import img1 from '../../assets/img1.png'; // Importing images for the hero section
 import FAQ from '../../components/FAQ.jsx'; // Importing FAQ component
-import app from '../../assets/app.png';
+import app from '../../assets/app.png'; // Importing images for service items
 import cloud from '../../assets/cloud.png';
 import analytics from '../../assets/analytics.png';
 import analysis from '../../assets/analysis.png';
@@ -22,16 +23,29 @@ export default function AboutUsPage() {
       <div className="px-4 py-8 md:px-8 md:py-16 lg:px-16 lg:py-24 overflow-hidden">
         {/* Hero section */}
         <section className="flex flex-col items-center md:flex-row md:items-start">
-          <img
-            src={img1}
+          <motion.img
+            src={img1} // Image for the hero section
             alt="Tech Illustration"
             className="w-3/4 md:w-1/2 lg:w-1/3 mb-6 md:mr-32 md:mb-0"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
           />
           <div className="md:ml-6 lg:ml-12 text-center md:text-left">
-            <h1 className="text-4xl font-extrabold md:text-3xl lg:text-4xl text-sky-800 mb-4">
+            <motion.h1
+              className="text-4xl font-extrabold md:text-3xl lg:text-4xl text-sky-800 mb-4"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+            >
               At DavTechInvest,
-            </h1>
-            <p className="text-base md:text-lg lg:text-xl mb-4">
+            </motion.h1>
+            <motion.p
+              className="text-base md:text-lg lg:text-xl mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               We Harness The Power Of Cutting-Edge Technology To Transform The Way
               Businesses Understand And Engage With Their Customers. Our Team Of
               Experts Specializes In Software Development, Data Collection,
@@ -39,46 +53,62 @@ export default function AboutUsPage() {
               Insights For Investors. With A Focus On Investable Industries, We
               Bridge The Gap Between Technological Innovation And Investment
               Strategies.
-            </p>
+            </motion.p>
             <div className="flex justify-center md:justify-start space-x-4 font-semibold text-2xl">
-              <button onClick={handleClick} className="bg-blue text-white px-4 py-2">
+              <motion.button
+                onClick={handleClick}
+                className="bg-blue text-white px-4 py-2"
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1, backgroundColor: '#1d4ed8' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+              >
                 Contact Us
-              </button>
+              </motion.button>
             </div>
           </div>
         </section>
 
         {/* Other services section */}
         <section className="mt-12">
-          <h2 className="md:text-2xl lg:text-3xl font-bold text-5xl pt-24 text-center mb-8 underline text-cyan-700">
+          <motion.h2
+            className="md:text-2xl lg:text-3xl font-bold text-5xl pt-24 text-center mb-8 underline text-cyan-700"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
             OTHER SERVICES
-          </h2>
+          </motion.h2>
           <div className="flex flex-wrap justify-center space-x-4 space-y-4 md:space-x-6 lg:space-x-8 gap-12">
             {/* Service items */}
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl flex-shrink-0 mt-4">
-              <img src={app} alt="App Development" className="h-12 mb-2"/>
-              App Development
-            </span>
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={cloud} alt="Cloud Based Solution" className="h-12 mb-2"/>
-              Cloud Based Solution
-            </span>
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={analytics} alt="Data Analytics" className="h-12 mb-2"/>
-              Data Analytics
-            </span>
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={development} alt="Web 3 Development" className="h-12 mb-2"/>
-              Web 3 Development
-            </span>
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={analysis} alt="Industrial Analysis" className="h-12 mb-2"/>
-              Industrial Analysis
-            </span>
-            <span className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl">
-              <img src={career} alt="Career Development" className="h-12 mb-2"/>
-              Career Development
-            </span>
+            {[
+              { src: app, alt: 'App Development', text: 'App Development' },
+              { src: cloud, alt: 'Cloud Based Solution', text: 'Cloud Based Solution' },
+              { src: analytics, alt: 'Data Analytics', text: 'Data Analytics' },
+              { src: development, alt: 'Web 3 Development', text: 'Web 3 Development' },
+              { src: analysis, alt: 'Industrial Analysis', text: 'Industrial Analysis' },
+              { src: career, alt: 'Career Development', text: 'Career Development' }
+            ].map((item, index) => (
+              <motion.span
+                key={index}
+                className="bg-white text-cyan-700 shadow-lg px-4 py-2 rounded-full font-semibold w-96 h-32 flex flex-col items-center justify-center text-3xl flex-shrink-0 mt-4"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1.02 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }} // Ensure animation occurs only once
+              >
+                <motion.img
+                  src={item.src}
+                  alt={item.alt}
+                  className="h-12 mb-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                />
+                {item.text}
+              </motion.span>
+            ))}
           </div>
         </section>
 
