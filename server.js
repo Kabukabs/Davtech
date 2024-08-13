@@ -6,9 +6,10 @@ const admin = require('firebase-admin'); // Firebase Admin SDK for interacting w
 const PDFDocument = require('pdfkit'); // Library for generating PDFs
 const nodemailer = require('nodemailer'); // Library for sending emails
 const { config } = require('dotenv'); // Library for loading environment variables
+require('dotenv').config();
 
 // Load environment variables from a custom file
-config({ path: './sample.env' }); // Use the .env file for environment configuration
+config({ path: './.env' }); // Use the .env file for environment configuration
 
 // Initialize Firebase Admin SDK
 const serviceAccount = require('./serviceAccountKey.json'); // Path to Firebase service account key
