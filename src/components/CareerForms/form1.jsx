@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for p
 import { db, storage } from '../CareerForms/firebaseConfig'; // Import Firebase Firestore and Storage instances
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import Firebase Storage functions
 import { collection, addDoc } from 'firebase/firestore'; // Import Firestore functions
+import { motion } from 'framer-motion'; // Import framer-motion for animations
 
 // Initial state for the form
 const initialState = {
@@ -79,12 +80,19 @@ export default function SkillCollab() {
 
   return (
     <div className="flex items-center justify-center min-h-screen w-full p-4 bg-babyblue">
-      <form
+      <motion.form
         onSubmit={submitForm} // Handle form submission
         encType="multipart/form-data" // Form encoding type for file uploads
         className="w-full max-w-[800px]"
+        initial={{ opacity: 0, y: 20 }} // Initial state for form animation
+        animate={{ opacity: 1, y: 0 }} // Animate to final state
+        transition={{ duration: 0.8, type: 'spring', stiffness: 100 }} // Animation duration and type
       >
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }} // Initial state for header animation
+          animate={{ opacity: 1, y: 0 }} // Animate to final state
+          transition={{ duration: 0.6, delay: 0.2 }} // Animation duration and delay
+        >
           <h2 className="font-bold text-darkblue mb-6 text-[40px]">
             SKILLFUL COLLABORATION
           </h2>
@@ -99,92 +107,56 @@ export default function SkillCollab() {
             Fill out the form below to express your interest and help cultivate
             talent and drive innovation.
           </p>
-        </div>
+        </motion.div>
 
         {/* Form fields */}
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="inline-name"
+        {['name', 'email', 'phone', 'experience'].map((field, index) => (
+          <motion.div
+            key={field}
+            className="md:flex md:items-center mb-6"
+            initial={{ opacity: 0, y: 20 }} // Initial state for field animation
+            animate={{ opacity: 1, y: 0 }} // Animate to final state
+            transition={{ duration: 0.6, delay: index * 0.2 }} // Animation duration and delay
           >
-            <span className="text-red-500">*</span>
-            Name:
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="text"
-              name="name"
-              value={form.name}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
+            <label
+              className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
+              htmlFor={`inline-${field}`}
+            >
+              <span className="text-red-500">*</span>
+              {field.charAt(0).toUpperCase() + field.slice(1)}:
+            </label>
+            <div className="w-full overflow-hidden">
+              {field === 'experience' ? (
+                <textarea
+                  onChange={handleChange} // Handle input changes
+                  name={field}
+                  value={form[field]}
+                  required
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
+                  id={`inline-${field}`}
+                  rows="5"
+                  cols="50"
+                />
+              ) : (
+                <input
+                  onChange={handleChange} // Handle input changes
+                  type={field === 'phone' ? 'number' : 'text'}
+                  name={field}
+                  value={form[field]}
+                  required
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
+                />
+              )}
+            </div>
+          </motion.div>
+        ))}
 
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="inline-email"
-          >
-            <span className="text-red-500">*</span>
-            Email:
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="email"
-              name="email"
-              value={form.email}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-16 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-10">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="inline-phone"
-          >
-            <span className="text-red-500">*</span>
-            Phone:
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="number"
-              name="phone"
-              value={form.phone}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-2 text-[15px]"
-            htmlFor="inline-experience"
-          >
-            <span className="text-red-500">*</span>
-            Experience:
-          </label>
-          <div className="w-full overflow-hidden">
-            <textarea
-              onChange={handleChange} // Handle input changes
-              name="experience"
-              value={form.experience}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-experience"
-              rows="5"
-              cols="50"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-6">
+        <motion.div
+          className="md:flex md:items-center mb-6"
+          initial={{ opacity: 0, y: 20 }} // Initial state for file upload animation
+          animate={{ opacity: 1, y: 0 }} // Animate to final state
+          transition={{ duration: 0.6, delay: 0.6 }} // Animation duration and delay
+        >
           <label
             className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
             htmlFor="inline-cv"
@@ -204,21 +176,28 @@ export default function SkillCollab() {
               {cvFileName} {/* Display the file name or default text */}
             </label>
           </label>
-        </div>
+        </motion.div>
 
         {/* Submit button */}
-        <div className="md:flex md:items-center">
+        <motion.div
+          className="md:flex md:items-center"
+          initial={{ opacity: 0, y: 20 }} // Initial state for submit button animation
+          animate={{ opacity: 1, y: 0 }} // Animate to final state
+          transition={{ duration: 0.6, delay: 0.8 }} // Animation duration and delay
+        >
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
-            <input
+            <motion.input
               type="submit"
               value={loading ? 'Submitting...' : 'Submit'} // Display loading state or submit text
               disabled={loading} // Disable button while loading
               className="shadow bg-blue mt-4 text-white font-bold py-2 px-4 rounded cursor-pointer"
+              whileHover={{ scale: 1.05 }} // Scale on hover
+              whileTap={{ scale: 0.95 }} // Scale on click
             />
           </div>
-        </div>
-      </form>
+        </motion.div>
+      </motion.form>
     </div>
   );
 }

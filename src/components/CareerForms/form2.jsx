@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate hook for n
 import { db, storage } from '../CareerForms/firebaseConfig'; // Import Firebase Firestore and Storage instances
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import Firebase Storage functions
 import { collection, addDoc } from 'firebase/firestore'; // Import Firestore functions
+import { motion } from 'framer-motion'; // Import framer-motion for animations
 
 // Initial state for the form
 const initialState = {
@@ -83,174 +84,170 @@ export default function MentorAdvisor() {
 
   return (
     <div className="flex items-center justify-center min-h-screen w-full p-4 bg-babyblue">
-      <form
-        onSubmit={submitForm} // Handle form submission
-        encType="multipart/form-data" // Form encoding type for file uploads
+      <motion.div
+        initial={{ opacity: 0, y: 20 }} // Initial state for form animation
+        animate={{ opacity: 1, y: 0 }} // Animate to final state
+        transition={{ duration: 0.8, type: 'spring', stiffness: 100 }} // Animation duration and type
         className="w-full max-w-[800px]"
       >
-        <div>
-          <h2 className="font-bold text-darkblue mb-6 text-[40px]">
-            MENTOR/ADVISOR
-          </h2>
-          <p className="text-darkblue text-[20px] mb-6">
-            Join DavTechinvest As A Mentor Or Advisor To Shape The Future Of
-            Technology And Careers By Sharing Your Expertise With Aspiring Tech
-            Professionals. You’ll Empower The Next Generation Of Leaders, Expand
-            Your Network, Stay Updated On Industry Trends, And Play A Pivotal
-            Role In Transforming Ideas Into Successful Ventures. Fill Out The
-            Form Below To Express Your Interest And Help Cultivate Talent And
-            Drive Innovation.
-          </p>
-          <p className="text-darkblue text-[20px] mb-5">
-            Fill out the form below to express your interest and help cultivate
-            talent and drive innovation.
-          </p>
-        </div>
+        <h2 className="font-bold text-darkblue mb-6 text-[40px]">
+          MENTOR/ADVISOR
+        </h2>
+        <p className="text-darkblue text-[20px] mb-6">
+          Join DavTechinvest As A Mentor Or Advisor To Shape The Future Of
+          Technology And Careers By Sharing Your Expertise With Aspiring Tech
+          Professionals. You’ll Empower The Next Generation Of Leaders, Expand
+          Your Network, Stay Updated On Industry Trends, And Play A Pivotal
+          Role In Transforming Ideas Into Successful Ventures. Fill Out The
+          Form Below To Express Your Interest And Help Cultivate Talent And
+          Drive Innovation.
+        </p>
+        <p className="text-darkblue text-[20px] mb-5">
+          Fill out the form below to express your interest and help cultivate
+          talent and drive innovation.
+        </p>
 
         {/* Form fields */}
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="name"
-          >
-            <span className="text-red-500">*</span>
-            Name
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="text"
-              name="name"
-              value={form.name}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="email"
-          >
-            <span className="text-red-500">*</span>
-            Email
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="email"
-              name="email"
-              value={form.email}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-16 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-10">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="phone"
-          >
-            <span className="text-red-500">*</span>
-            Phone
-          </label>
-          <div className="w-full overflow-hidden">
-            <input
-              onChange={handleChange} // Handle input changes
-              type="number"
-              name="phone"
-              value={form.phone}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-2 text-[15px]"
-            htmlFor="experience"
-          >
-            <span className="text-red-500">*</span>
-            Experience
-          </label>
-          <div className="w-full overflow-hidden">
-            <textarea
-              onChange={handleChange} // Handle input changes
-              name="experience"
-              value={form.experience}
-              required
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
-              id="experience"
-              rows="5"
-              cols="50"
-            />
-          </div>
-        </div>
-
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
-            htmlFor="cv"
-          >
-            CV Upload
-            <input
-              onChange={handleUpload} // Handle file upload
-              type="file"
-              name="cv"
-              className="hidden"
-              id="cvUpload"
-            />
-            <label
-              htmlFor="cvUpload"
-              className="bg-gray-200 border-2 border-gray-200 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 ml-10 cursor-pointer"
+        <form onSubmit={submitForm}>
+          {[
+            { name: 'name', type: 'text', label: 'Name' },
+            { name: 'email', type: 'email', label: 'Email' },
+            { name: 'phone', type: 'number', label: 'Phone' }
+          ].map((field, index) => (
+            <motion.div
+              key={field.name}
+              className="md:flex md:items-center mb-6"
+              initial={{ opacity: 0, y: 20 }} // Initial state for field animation
+              animate={{ opacity: 1, y: 0 }} // Animate to final state
+              transition={{ duration: 0.6, delay: index * 0.2 }} // Animation duration and delay
             >
-              {cvFileName} {/* Display the file name or default text */}
-            </label>
-          </label>
-        </div>
+              <label
+                className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
+                htmlFor={field.name}
+              >
+                <span className="text-red-500">*</span>
+                {field.label}
+              </label>
+              <div className="w-full overflow-hidden">
+                <input
+                  onChange={handleChange} // Handle input changes
+                  type={field.type}
+                  name={field.name}
+                  value={form[field.name]}
+                  required
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-14 focus:outline-none focus:bg-white focus:border-purple-500"
+                />
+              </div>
+            </motion.div>
+          ))}
 
-        <div className="md:flex md:items-center mb-6">
-          <h3 className="block text-darkblue md:text-right mb-2 text-[15px]">Join As</h3>
-          <div className="flex flex-col md:flex-row items-start mb-2 bg-gray-100 p-2 rounded">
-            <label className="text-darkblue flex items-center mb-2">
-              <input
-                onChange={handleChange} // Handle checkbox change
-                checked={form.mentor}
-                type="checkbox"
-                name="mentor"
-                className="ml-2 bg-blue"
-              />
-              Mentor
+          <motion.div
+            className="md:flex md:items-center mb-6"
+            initial={{ opacity: 0, y: 20 }} // Initial state for textarea animation
+            animate={{ opacity: 1, y: 0 }} // Animate to final state
+            transition={{ duration: 0.6, delay: 0.6 }} // Animation duration and delay
+          >
+            <label
+              className="block text-darkblue md:text-right mb-2 text-[15px]"
+              htmlFor="experience"
+            >
+              <span className="text-red-500">*</span>
+              Experience
             </label>
-            <label className="text-darkblue flex items-center">
-              <input
-                onChange={handleChange} // Handle checkbox change
-                checked={form.advisor}
-                type="checkbox"
-                name="advisor"
-                className="ml-2 bg-blue"
+            <div className="w-full overflow-hidden">
+              <textarea
+                onChange={handleChange} // Handle input changes
+                name="experience"
+                value={form.experience}
+                required
+                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight ml-6 mt-10 focus:outline-none focus:bg-white focus:border-purple-500"
+                id="experience"
+                rows="5"
+                cols="50"
               />
-              Advisor
-            </label>
-          </div>
-        </div>
+            </div>
+          </motion.div>
 
-        {/* Submit button */}
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
-            <input
-              type="submit"
-              value={loading ? "Submitting..." : "Submit"} // Display loading state or submit text
-              disabled={loading} // Disable button while loading
-              className="shadow bg-blue mt-4 text-white font-bold py-2 px-4 rounded cursor-pointer"
-            />
-          </div>
-        </div>
-      </form>
+          <motion.div
+            className="md:flex md:items-center mb-6"
+            initial={{ opacity: 0, y: 20 }} // Initial state for file upload animation
+            animate={{ opacity: 1, y: 0 }} // Animate to final state
+            transition={{ duration: 0.6, delay: 0.8 }} // Animation duration and delay
+          >
+            <label
+              className="block text-darkblue md:text-right mb-1 md:mb-0 text-[15px]"
+              htmlFor="cv"
+            >
+              CV Upload
+              <input
+                onChange={handleUpload} // Handle file upload
+                type="file"
+                name="cv"
+                className="hidden"
+                id="cvUpload"
+              />
+              <label
+                htmlFor="cvUpload"
+                className="bg-gray-200 border-2 border-gray-200 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 ml-10 cursor-pointer"
+              >
+                {cvFileName} {/* Display the file name or default text */}
+              </label>
+            </label>
+          </motion.div>
+
+          <motion.div
+            className="md:flex md:items-center mb-6"
+            initial={{ opacity: 0, y: 20 }} // Initial state for checkboxes animation
+            animate={{ opacity: 1, y: 0 }} // Animate to final state
+            transition={{ duration: 0.6, delay: 1 }} // Animation duration and delay
+          >
+            <h3 className="block text-darkblue md:text-right mb-2 text-[15px]">Join As</h3>
+            <div className="flex flex-col md:flex-row items-start mb-2 bg-gray-100 p-2 rounded">
+              <label className="text-darkblue flex items-center mb-2">
+                <input
+                  onChange={handleChange} // Handle checkbox change
+                  checked={form.mentor}
+                  type="checkbox"
+                  name="mentor"
+                  className="ml-2 bg-blue"
+                />
+                Mentor
+              </label>
+              <label className="text-darkblue flex items-center">
+                <input
+                  onChange={handleChange} // Handle checkbox change
+                  checked={form.advisor}
+                  type="checkbox"
+                  name="advisor"
+                  className="ml-2 bg-blue"
+                />
+                Advisor
+              </label>
+            </div>
+          </motion.div>
+
+          {/* Submit button */}
+          <motion.div
+            className="md:flex md:items-center"
+            initial={{ opacity: 0, y: 20 }} // Initial state for button animation
+            animate={{ opacity: 1, y: 0 }} // Animate to final state
+            transition={{ duration: 0.6, delay: 1.2 }} // Animation duration and delay
+          >
+            <div className="md:w-1/3"></div>
+            <div className="md:w-2/3">
+              <motion.button
+                type="submit"
+                disabled={loading} // Disable button while loading
+                className="shadow bg-blue mt-4 text-white font-bold py-2 px-4 rounded cursor-pointer"
+                whileHover={{ scale: 1.05 }} // Scale on hover
+                whileTap={{ scale: 0.95 }} // Scale on click
+              >
+                {loading ? "Submitting..." : "Submit"} {/* Display loading state or submit text */}
+              </motion.button>
+            </div>
+          </motion.div>
+        </form>
+      </motion.div>
     </div>
   );
 }
