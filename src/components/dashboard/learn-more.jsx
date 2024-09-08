@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSpring, useTrail, animated, config } from 'react-spring';
-import { Text } from '../../ui/custom-ui/text';
+import { Text } from '../ui/custom-ui/text';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { TableLayout } from '../../ui/custom-ui/table-layout';
+import { TableLayout } from '../ui/custom-ui/table-layout';
 import { ProjectsJson } from './project.js';
 
 const twitterImg = '../../../public/twitter-alt-square_12107611.svg';

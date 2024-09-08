@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Text } from '@/components/ui/custom-ui/text';
-import { ApplySchema } from '../../../lib/schemas';
+import { ApplySchema } from '../../lib/schemas';
 import { useSpring, animated } from 'react-spring';
 import { db, storage } from '/src/components/CareerForms/firebaseConfig'; // Firebase setup
 import { collection, addDoc } from 'firebase/firestore';
