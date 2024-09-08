@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Text } from '../../ui/custom-ui/text';
-import { ModalWrapper } from '../../ui/custom-ui/dialog-layout';
+import { Text } from '../ui/custom-ui/text';
+import { ModalWrapper } from '../ui/custom-ui/dialog-layout';
 import { ApplyForJob } from './apply';
 import { useSpring, animated } from 'react-spring';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 
 // Firebase configuration object containing API keys and project settings.
@@ -20,12 +21,11 @@ const firebaseConfig = {
 // Initialize Firebase with the configuration object.
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Analytics for tracking user interactions.
-const analytics = getAnalytics(app);
-
-// Initialize Firestore database and storage services.
+// Initialize Firebase services.
+const analytics = getAnalytics(app);  // Analytics service for tracking user interactions.
 const db = getFirestore(app);  // Firestore service for database operations.
 const storage = getStorage(app);  // Storage service for file uploads and downloads.
+const auth = getAuth(app);  // Authentication service for managing user authentication.
 
-// Export Firestore and Storage instances for use in other parts of the application.
-export { db, storage };
+// Export Firebase services for use in other parts of the application.
+export { db, storage, auth, analytics, app };
