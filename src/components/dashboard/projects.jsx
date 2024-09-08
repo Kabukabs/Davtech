@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Text } from '../../ui/custom-ui/text';
-import { IconInput } from '../../ui/custom-ui/icon-input';
+import { Text } from '../ui/custom-ui/text';
+import { IconInput } from '../ui/custom-ui/icon-input';
 import { SearchNormal } from 'iconsax-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Pagination } from '../../common/pagination';
+import { Pagination } from '../common/pagination';
 import { ProjectCard } from './project-card';
 import { ProjectsJson } from './project';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { db } from '../../CareerForms/firebaseConfig';
+import { db } from '../CareerForms/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
 export const Projects = () => {

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Text } from '../../ui/custom-ui/text';
-import { Button } from '../../ui/button';
+import { Text } from '../ui/custom-ui/text';
+import { Button } from '../ui/button';
 import { Login } from 'iconsax-react';
 import { useSpring, animated, config } from 'react-spring';
 import { LearnMore } from './learn-more';
 import { JobSection } from './job-section';
-import { ModalWrapper } from '../../ui/custom-ui/dialog-layout';
+import { EditModal } from './edit';
+import { DeleteModal } from './delete';
+import { ModalWrapper } from '../ui/custom-ui/dialog-layout';
 
 export const ProjectCard = ({ project }) => {
   const [loading, setLoading] = useState(false);
@@ -47,6 +49,13 @@ export const ProjectCard = ({ project }) => {
     compensation = ['N/A'],
     overview = {},
   } = selectedProject;
+
+  const handleEdit = (updatedData) => {
+    setSelectedProject(prev => ({
+      ...prev,
+      ...updatedData,
+    }));
+  };
 
   // Ensure compensation is an array
   const compensationArray = Array.isArray(compensation) ? compensation : [compensation];
@@ -127,6 +136,51 @@ export const ProjectCard = ({ project }) => {
               jobs={overview?.jobs || []}
               projectId={id}
             />
+          </ModalWrapper>
+
+          <ModalWrapper
+            title="Edit"
+            trigger={
+              <animated.div style={buttonSpring}>
+                <Button className="bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-500">
+                  Edit
+                </Button>
+              </animated.div>
+            }
+          >
+            <EditModal
+              projectId={id}
+              formData={{
+                name: name || '',
+                category: category || '',
+                compensation: compensationArray || [],
+                progress: progress || '',
+                start_date: start_date || '',
+                overview: {
+                  profile: overview?.profile || 'No profile available',
+                  vision_mission: overview?.vision_mission || [],
+                  contributors: overview?.contributors || [],
+                  compensation: overview?.compensation || [],
+                  default_compensation: overview?.default_compensation || null,
+                  social_links: overview?.social_links || [],
+                  jobs: overview?.jobs || [],
+                },
+              }}
+              setFormData={handleEdit}
+            />
+          </ModalWrapper>
+
+          <ModalWrapper
+            title="Delete"
+            trigger={
+              <animated.div style={buttonSpring}>
+                <Button className="bg-red-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-red-500">
+                  Delete
+                </Button>
+              </animated.div>
+            }
+          >
+            <DeleteModal projectId={id} />
           </ModalWrapper>
         </div>
       </div>
