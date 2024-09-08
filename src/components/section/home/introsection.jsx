@@ -51,7 +51,7 @@ export const Introsection = () => {
         </div>
         <div className="animate-fadeInUp">
           <Text
-            as="h4"
+            as="h6"
             style="md:text-xl text-lg font-semibold lg:w-[75%] w-full"
           >
             Leveraging Web2 & Web3 Technologies For Investable Industry Success
