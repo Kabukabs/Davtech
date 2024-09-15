@@ -1,10 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useSpring, useTrail, animated, config } from 'react-spring';
-import { Text } from '../../ui/custom-ui/text';
-import { TableCell, TableRow } from '@/components/ui/table';
-import { TableLayout } from '../../ui/custom-ui/table-layout';
-import { ProjectsJson } from './project.js';
+/*
+  The `LearnMore` component provides detailed information about a project, including:
+  - Project overview with title
+  - Company profile
+  - Vision and mission
+  - Development roadmap
+  - Contributors and their tasks
+  - Compensation details
+  - Social media links
 
+  The component uses animations from `react-spring` for a smooth user experience.
+  It displays data from the `ProjectsJson` file and renders dynamic content based on props.
+*/
+
+import React, { useState } from 'react';
+import { useSpring, useTrail, animated, config } from 'react-spring'; // Animation hooks from react-spring
+import { Text } from '../../ui/custom-ui/text'; // Custom text component
+import { TableCell, TableRow } from '@/components/ui/table'; // Table components
+import { TableLayout } from '../../ui/custom-ui/table-layout'; // Custom table layout component
+import { ProjectsJson } from './project.js'; // Static project data
+
+// Social media images (ensure these paths are correct)
 const twitterImg = '../../../public/twitter-alt-square_12107611.svg';
 const telegramImg = '../../../public/telegram_4401433.svg';
 const linkedinImg = '../../../public/linkedin_3991775.svg';
@@ -17,14 +32,16 @@ export const LearnMore = ({
   compensation = [],
   social_links = [],
 }) => {
-  const [selectedCompensation, setSelectedCompensation] = useState(null);
+  const [selectedCompensation, setSelectedCompensation] = useState(null); // State for selected compensation
 
+  // Fade-in animation for the entire section
   const fadeInProps = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: config.slow,
   });
 
+  // Trail animation for the development roadmap items
   const roadmapTrail = useTrail(ProjectsJson[0].overview.developement_roadmap.length, {
     transform: 'scale(1)',
     from: { transform: 'scale(0.9)' },
@@ -32,6 +49,7 @@ export const LearnMore = ({
     reset: true,
   });
 
+  // Animation for social media icons
   const socialSpring = useSpring({
     opacity: 1,
     from: { opacity: 0 },
@@ -41,17 +59,20 @@ export const LearnMore = ({
 
   return (
     <div>
+      {/* Project title */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-4xl font-extrabold md:text-2xl text-xl mb-4">
           {`${title.toUpperCase()} PROJECT OVERVIEW`}
         </Text>
       </animated.div>
 
+      {/* Company profile */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-black lg:text-lg md:text-md text-md">COMPANY PROFILE:</Text>
         <Text as="p" style="text-black md:text-sm text-xs">{profile}</Text>
       </animated.div>
 
+      {/* Vision and mission */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-black lg:text-lg md:text-md text-sm">VISION AND MISSION:</Text>
         <ul className="list-disc md:text-sm text-xs space-y-2">
@@ -61,6 +82,7 @@ export const LearnMore = ({
         </ul>
       </animated.div>
 
+      {/* Development roadmap */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
           DEVELOPMENT ROADMAP
@@ -83,6 +105,7 @@ export const LearnMore = ({
         </div>
       </animated.div>
 
+      {/* Contributors */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
           CONTRIBUTORS
@@ -108,6 +131,7 @@ export const LearnMore = ({
         </TableLayout>
       </animated.div>
 
+      {/* Compensation */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
           COMPENSATION
@@ -122,6 +146,7 @@ export const LearnMore = ({
         </div>
       </animated.div>
 
+      {/* Social media links */}
       <animated.div style={socialSpring} className="mt-[5rem]">
         <Text as="h6" style="text-center text-black mb-4">Connect with us</Text>
         <div className="flex justify-center gap-4">

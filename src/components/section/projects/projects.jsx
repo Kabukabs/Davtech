@@ -1,20 +1,32 @@
+/*
+  The `Projects` component displays a list of projects fetched from Firebase, allowing users to filter projects by category using tabs. It includes:
+  - A search input for filtering projects by name or description
+  - Tabs for selecting different project categories (All, Ongoing, Future, Completed)
+  - Display of project cards based on the selected category
+  - Pagination for navigating through multiple pages of projects
+
+  The component uses Firebase Firestore to fetch projects and handles filtering based on selected categories.
+*/
+
 import { useState, useEffect } from 'react';
-import { Text } from '../../ui/custom-ui/text';
-import { IconInput } from '../../ui/custom-ui/icon-input';
-import { SearchNormal } from 'iconsax-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Pagination } from '../../common/pagination';
-import { ProjectCard } from './project-card';
-import { ProjectsJson } from './project';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { db } from '../../CareerForms/firebaseConfig';
-import { collection, getDocs } from 'firebase/firestore';
+import { Text } from '../../ui/custom-ui/text'; // Custom text component
+import { IconInput } from '../../ui/custom-ui/icon-input'; // Custom input component with icon
+import { SearchNormal } from 'iconsax-react'; // Search icon component
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'; // Tab components
+import { Pagination } from '../../common/pagination'; // Pagination component
+import { ProjectCard } from './project-card'; // Component to display individual project cards
+import { ProjectsJson } from './project'; // Static project data (fallback)
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'; // Custom scroll area components
+import { db } from '../../CareerForms/firebaseConfig'; // Firebase Firestore configuration
+import { collection, getDocs } from 'firebase/firestore'; // Firebase Firestore methods
 
 export const Projects = () => {
+  // State to manage the active category and the list of projects
   const [activeCategory, setActiveCategory] = useState('all');
-  const [projects, setProjects] = useState(ProjectsJson);
+  const [projects, setProjects] = useState(ProjectsJson); // Default to static data initially
   const [filteredProjects, setFilteredProjects] = useState([]);
 
+  // Fetch projects from Firebase Firestore when the component mounts or category changes
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -33,6 +45,7 @@ export const Projects = () => {
     fetchProjects();
   }, [activeCategory]);
 
+  // Filter projects based on the active category
   useEffect(() => {
     filterProjects(projects, activeCategory);
   }, [activeCategory, projects]);
@@ -83,7 +96,7 @@ export const Projects = () => {
         <IconInput
           icon={<SearchNormal size="20" color="black" />}
           placeHolder
-          handleChange={(e) => console.log(e.target.value)}
+          handleChange={(e) => console.log(e.target.value)} // Placeholder for search functionality
           type={'text'}
           className="shadow drop-shadow-md bg-whitethick"
         />
