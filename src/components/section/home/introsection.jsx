@@ -49,10 +49,10 @@ export const Introsection = () => {
             SOLUTIONS
           </Text>
         </div>
-        <div className="animate-fadeInUp">
+        <div className="animate-fadeInUp flex justify-center">
           <Text
             as="h6"
-            style="md:text-xl text-lg font-semibold lg:w-[75%] w-full"
+            style="md:text-xl text-lg font-semibold lg:w-[100%] w-full"
           >
             Leveraging Web2 & Web3 Technologies For Investable Industry Success
           </Text>

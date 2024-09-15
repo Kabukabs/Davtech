@@ -37,7 +37,9 @@ export const FooterLinks=[
             },{
                 title:"07072779788"
             },{
-                title:"techdavinvest@gmail.com"
+                title:"contactdavinvest@gmail.com"
+            },{
+                title:"techinvest.ng"
             }
         ]
 

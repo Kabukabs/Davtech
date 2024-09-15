@@ -72,8 +72,7 @@ export const Projects = () => {
           <div className="p-2 rounded-lg text-white blur-bg">
             <Text as="h6" style="text-center text-white text-xs">
               You can now add a project for collaborators or join an existing
-              project as a collaborator. Click here to add a project or view
-              available projects for collaboration.
+              project as a collaborator. <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" >CLICK HERE</a> to add a project 
             </Text>
           </div>
         </figcaption>

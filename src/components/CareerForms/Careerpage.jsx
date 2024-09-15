@@ -58,7 +58,7 @@ export const Careerpage = () => {
                 animate={{ opacity: 1, scale: 1 }} // Animate to final state
                 transition={{ duration: 0.4, type: 'spring', stiffness: 100 }} // Animation duration and type
               >
-                SKILLFUL COLLABORATION
+                SKILLFUL COLLABORATOR
               </motion.button>
             </Link>
           </div>
