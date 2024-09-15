@@ -1,9 +1,21 @@
+/**
+ * EditModal Component
+ * 
+ * This component represents a modal dialog for editing project details. It includes a form that allows
+ * users to update various fields of a project, including its name, category, compensation, progress,
+ * start date, overview, vision & mission, social links, contributors, and jobs. The component fetches
+ * the current project data from Firebase Firestore based on the provided `projectId` and allows users
+ * to make modifications to this data. Upon saving, the updated data is pushed back to Firebase, and the
+ * modal closes after reloading the page to reflect the changes.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
 import { db } from '/src/components/CareerForms/firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
+  // State to manage local form data
   const [localFormData, setLocalFormData] = useState({
     name: '',
     category: '',
@@ -24,6 +36,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     ...formData,
   });  
 
+  // Fetch project data when component mounts or projectId changes
   useEffect(() => {
     const fetchProjectData = async () => {
       if (projectId) {
@@ -49,6 +62,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     setLocalFormData((prevData) => ({ ...prevData, ...formData }));
   }, [formData]);
 
+  // Handle form submission to update project data
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
@@ -62,6 +76,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     }
   };
 
+  // Handle changes to compensation fields
   const handleCompensationChange = (e) => {
     const { name, value } = e.target;
     setLocalFormData((prevData) => ({
@@ -70,6 +85,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     }));
   };
 
+  // Handle changes to general fields or fields within the overview object
   const handleChange = (e) => {
     const { name, value } = e.target;
   
@@ -93,7 +109,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     }
   };
   
-
+  // Handle changes to tasks within contributors
   const handleTaskChange = (e, contributorIndex, taskIndex) => {
     const { value } = e.target;
     setLocalFormData((prevData) => {
@@ -105,6 +121,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     });
   };
 
+  // Add a new task to a contributor
   const handleAddTask = (contributorIndex) => {
     setLocalFormData((prevData) => {
       const updatedContributors = [...prevData.overview.contributors];
@@ -116,6 +133,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     });
   };
 
+  // Handle changes to arrays in the state, with optional subField handling
   const handleArrayChange = (e, index, name, subField = null) => {
     const { value } = e.target;
     setLocalFormData((prevData) => {
@@ -148,6 +166,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     });
   };
 
+  // Add a new item to an array field
   const handleAddToArray = (name) => {
     setLocalFormData((prevData) => {
       const newItem = name === 'overview.contributors' ? { name: '', role: '', tasks: [] } : '';
@@ -169,6 +188,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     });
   };
 
+  // Remove an item from an array field
   const handleRemoveFromArray = (name, index) => {
     setLocalFormData((prevData) => {
       if (name.includes('.')) {
@@ -190,6 +210,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     });
   };
 
+  // Handle changes to social links within the overview object
   const handleOverviewChange = (e) => {
     const { name, value } = e.target;
     setLocalFormData((prevData) => ({
@@ -440,6 +461,7 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
             </button>
           </div>
 
+          {/* Save Button */}
           <Button type="submit" className="bg-green-500 text-white w-full mt-4">
             Save
           </Button>
