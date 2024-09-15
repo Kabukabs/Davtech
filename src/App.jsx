@@ -12,8 +12,7 @@ import Thankyou from './components/CareerForms/Thankyou';
 import { Dashboard } from './pages/dashboard';
 import { AddProject } from './pages/addProject';
 import { AppContextProvider } from './lib/context/app.context';
-import { AuthProvider } from './lib/context/auth.context';  // Import AuthProvider
-import ProtectedRoute1 from './ProtectedRoute';  // Adjusted path
+import { AuthProvider } from './lib/context/auth.context';
 import Login from './components/dashboard/Login';
 import LoginAddProject from './pages/LoginAddProject';
 import ProtectedRoute from './ProtectedRoute';
@@ -44,9 +43,9 @@ function App() {
               <Route 
                 path="/projects/dashboard" 
                 element={
-                  <ProtectedRoute1>
+                  <ProtectedRoute>
                     <Dashboard />
-                  </ProtectedRoute1>
+                  </ProtectedRoute>
                 } 
               />
               <Route path="/login" element={<Login />} />
