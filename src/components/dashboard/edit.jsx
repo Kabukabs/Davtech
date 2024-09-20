@@ -225,6 +225,16 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
     }));
   };
 
+  // Development Roadmap - handle stage selection
+  const handleRoadmapChange = (e) => {
+    const { value } = e.target;
+    setLocalFormData((prevData) => ({
+      ...prevData,
+      development_roadmap: value,
+    }));
+  };
+
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-3xl max-h-[500px] overflow-y-auto">
@@ -289,6 +299,22 @@ export const EditModal = ({ projectId, formData, setFormData, onClose }) => {
             onChange={handleChange}
             className="border w-full border-gray-300 p-2 rounded mt-2"
           />
+
+          {/* Development Roadmap */}
+          <label className="block font-semibold mt-4">Development Roadmap Stage</label>
+          <select
+            name="development_roadmap"
+            value={localFormData.development_roadmap || ''}
+            onChange={handleRoadmapChange}
+            className="border w-full border-gray-300 p-2 rounded mt-2"
+          >
+            <option value="">Select a stage</option>
+            <option value="idea">Idea</option>
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="testing">Testing</option>
+            <option value="deployment">Deployment</option>
+          </select>
 
           {/* Project Overview */}
           <label className="block font-semibold">Project Overview</label>

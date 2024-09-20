@@ -69,7 +69,7 @@ export const Dashboard = () => {
   // JSX rendering the dashboard interface, including buttons for logging out and adding projects
   return (
     <>
-      <div className="flex justify-around w-screen">  {/* Flex container for buttons */}
+      <div className="flex justify-around w-screen mt-4">  {/* Flex container for buttons */}
         <button 
           onClick={handleLogout}  // Attach handleLogout to the logout button
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-3"
