@@ -20,7 +20,7 @@ import ProtectedRoute from './ProtectedRoute';
 function App() {
   return (
     <Router>
-      <AuthProvider>  {/* Wrap the entire app with AuthProvider */}
+      <AuthProvider>
         <AppContextProvider>
           <Routes>
             <Route element={<PageLayout />}>

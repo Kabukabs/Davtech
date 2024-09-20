@@ -213,6 +213,17 @@ export const AddProject = () => {
     }
   };  
   
+  /**
+   * Handles changes in the development roadmap stage and updates the image.
+   */
+  const handleRoadmapChange = (e) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      development_roadmap: value,
+    }));
+  };
+
   return (
     <div>
       {/* Header with Logout and Dashboard buttons */}
@@ -248,7 +259,7 @@ export const AddProject = () => {
               className="border border-gray-300 p-2 rounded"
             />
 
-<label className="block">Category</label>
+        <label className="block">Category</label>
           <select
             name="category"
             value={formData.category}
@@ -301,7 +312,24 @@ export const AddProject = () => {
             placeholder="Describe the compensation"
           ></textarea>
 
+          {/* Development Roadmap */}
+          <label className="block">Development Roadmap Stage</label>
+          <select
+            name="development_roadmap"
+            value={formData.development_roadmap || ''}
+            onChange={handleRoadmapChange}
+            className="border w-full border-gray-300 p-2 rounded mt-2"
+          >
+            <option value="">Select a stage</option>
+            <option value="idea">Idea</option>
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="testing">Testing</option>
+            <option value="deployment">Deployment</option>
+          </select>
+
           {/* Overview section */}
+          <label className="block">Project Overview</label>
           <textarea
             name="overview.profile"
             value={formData.overview.profile}
