@@ -1,47 +1,95 @@
 /*
- * The LearnMore component provides a detailed view of a project's information, including its profile, vision & mission,
- * development roadmap, contributors, compensation, and social media links. It uses React Spring for animations and 
- * presents this data in a structured format with various layout components.
- */
+  The `LearnMore` component provides detailed information about a project, including:
+  - Project overview with title
+  - Company profile
+  - Vision and mission
+  - Development roadmap (dynamically passed from project card)
+  - Contributors and their tasks
+  - Compensation details
+  - Social media links
+
+  The component matches each roadmap stage passed from the project card
+  with the corresponding image from `ProjectsJson`.
+  If no match is found, a default image is displayed.
+*/
 
 import React, { useState } from 'react';
-import { useSpring, useTrail, animated, config } from 'react-spring'; // Animations from react-spring
-import { Text } from '../ui/custom-ui/text'; // Custom Text component for styling text elements
-import { TableCell, TableRow } from '@/components/ui/table'; // Custom table elements
-import { TableLayout } from '../ui/custom-ui/table-layout'; // Layout for rendering tabular data
-import { ProjectsJson } from './project.js'; // JSON data for the project
+import { useSpring, useTrail, animated, config } from 'react-spring';
+import { Text } from '../ui/custom-ui/text';
+import { TableCell, TableRow } from '@/components/ui/table';
+import { TableLayout } from '../ui/custom-ui/table-layout';
 
-// Image paths for social media icons
+import idea from '/WhatsApp Image 2024-07-04 at 6.07.07 AM (1) 1.svg';
+import design from '/WhatsApp Image 2024-07-04 at 6.07.07 AM (2) 2.svg';
+import development from '/WhatsApp Image 2024-07-04 at 6.07.07 AM 1.svg';
+import testing from '/WhatsApp Image 2024-07-04 at 6.07.09 AM 1.svg';
+import deployment from '/12376840_4884792 1.svg';
+
+// Social media images
 const twitterImg = '../../../public/twitter-alt-square_12107611.svg';
 const telegramImg = '../../../public/telegram_4401433.svg';
 const linkedinImg = '../../../public/linkedin_3991775.svg';
 
-export const LearnMore = ({ 
-  title = '', // Project title
-  profile = '', // Company profile text
-  vision_mission = [], // Array of vision and mission statements
-  contributors = [], // Array of contributors to the project
-  compensation = [], // Array of compensation packages
-  social_links = [], // Social media links object (Twitter, Telegram, LinkedIn)
-}) => {
-  const [selectedCompensation, setSelectedCompensation] = useState(null); // State for tracking selected compensation
+// Project roadmap information
+export const ProjectsJson = [
+  {
+    overview: {
+      developement_roadmap: [
+        { img: idea, title: 'idea' },
+        { img: design, title: 'design' },
+        { img: development, title: 'development' },
+        { img: testing, title: 'testing' },
+        { img: deployment, title: 'deployment' },
+      ],
+    },
+  },
+];
 
-  // Spring animation for fading elements in
+export const LearnMore = ({
+  title = '',
+  profile = '',
+  vision_mission = [],
+  development_roadmap = '',
+  contributors = [],
+  compensation = [],
+  social_links = [],
+}) => {
+  const [roadmapData] = useState(null);
+
+  // Normalize text for comparison
+  // Normalize text for comparison (handling both Firebase data and passed prop)
+const normalizeText = (text) => {
+  return text?.toUpperCase().trim() || '';
+};
+
+// Find the correct image for the current development stage
+const getRoadmapImage = (stageTitle) => {
+  const normalizedTitle = normalizeText(stageTitle);
+  const stage = ProjectsJson[0]?.overview?.developement_roadmap.find(
+    (item) => normalizeText(item.title) === normalizedTitle
+  );
+  return stage ? stage.img : '/default-img.png';
+};
+
+// Inside the return statement (log fetched data for clarity)
+const stageImage = getRoadmapImage(roadmapData?.title || development_roadmap);
+
+  // Spring animation
   const fadeInProps = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: config.slow,
   });
 
-  // Trail animation for roadmap items (from the project's development roadmap)
-  const roadmapTrail = useTrail(ProjectsJson[0].overview.developement_roadmap.length, {
+  // Trail animation
+  const roadmapTrail = useTrail((roadmapData?.items || []).length, {
     transform: 'scale(1)',
     from: { transform: 'scale(0.9)' },
     config: config.default,
     reset: true,
   });
 
-  // Spring animation for social media icons
+  // Spring for social media icons
   const socialSpring = useSpring({
     opacity: 1,
     from: { opacity: 0 },
@@ -51,20 +99,17 @@ export const LearnMore = ({
 
   return (
     <div>
-      {/* Project overview header */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-4xl font-extrabold md:text-2xl text-xl mb-4">
           {`${title.toUpperCase()} PROJECT OVERVIEW`}
         </Text>
       </animated.div>
 
-      {/* Company profile section */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-black lg:text-lg md:text-md text-md">COMPANY PROFILE:</Text>
         <Text as="p" style="text-black md:text-sm text-xs">{profile}</Text>
       </animated.div>
 
-      {/* Vision and Mission section */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-black lg:text-lg md:text-md text-sm">VISION AND MISSION:</Text>
         <ul className="list-disc md:text-sm text-xs space-y-2">
@@ -74,37 +119,49 @@ export const LearnMore = ({
         </ul>
       </animated.div>
 
-      {/* Development roadmap section */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
-          DEVELOPMENT ROADMAP
+          DEVELOPMENT STAGE
         </Text>
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-4">
-          {/* Loop over roadmap data and animate each item */}
-          {ProjectsJson[0].overview.developement_roadmap.length > 0 && roadmapTrail.map((style, index) => (
-            <animated.div key={index} style={style} className="flex flex-col items-center justify-center">
-              <div className="w-[7rem]">
-                <img
-                  src={ProjectsJson[0].overview.developement_roadmap[index]?.img || '/default-img.png'}
-                  alt="Roadmap item"
-                  className="w-full"
-                />
-              </div>
+        <div className="flex flex-col gap-4 p-4 justify-center text-center">
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-[7rem]">
+              {/* Render the image for the current development stage */}
+              <img
+                src={stageImage}
+                alt={roadmapData?.title || development_roadmap}
+                className="w-full"
+              />
+              {/* Add the title text under the image */}
               <Text as="h4" style="text-center text-black md:text-sm text-xl mt-2">
-                {ProjectsJson[0].overview.developement_roadmap[index]?.title?.toUpperCase() || 'N/A'}
+                {roadmapData?.title?.toUpperCase() || development_roadmap?.toUpperCase() || 'N/A'}
               </Text>
-            </animated.div>
-          ))}
+            </div>
+          </div>
+          {/* Loop over roadmap data and animate each item */}
+          {roadmapData?.items?.length > 0 &&
+            roadmapTrail.map((style, index) => (
+              <animated.div key={index} style={style} className="flex flex-col items-center justify-center">
+                <div className="w-[7rem]">
+                  <img
+                    src={roadmapData.items[index]?.img || '/default-img.png'}
+                    alt="Roadmap item"
+                    className="w-full"
+                  />
+                </div>
+                <Text as="h4" style="text-center text-black md:text-sm text-xl mt-2">
+                  {roadmapData.items[index]?.title?.toUpperCase() || 'N/A'}
+                </Text>
+              </animated.div>
+            ))}
         </div>
       </animated.div>
 
-      {/* Contributors section */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
           CONTRIBUTORS
         </Text>
         <TableLayout tableHeadRow={['NAMES', 'ROLES', 'TASKS AND CONTRIBUTIONS']}>
-          {/* Render each contributor in a table row */}
           {contributors.map((info, index) => (
             <TableRow key={index} className="text-black">
               <TableCell className="font-medium">{info.name || 'N/A'}</TableCell>
@@ -125,13 +182,11 @@ export const LearnMore = ({
         </TableLayout>
       </animated.div>
 
-      {/* Compensation section */}
       <animated.div style={fadeInProps}>
         <Text as="h6" style="text-center text-black lg:text-2xl font-extrabold md:text-xl text-lg mb-4 mt-12">
           COMPENSATION
         </Text>
         <div>
-          {/* Render each compensation item */}
           {compensation.map((item, index) => (
             <div className="flex flex-col gap-4 p-4 border justify-center text-center rounded-lg" key={index}>
               <Text as="h6" style="font-semibold">{item.title || 'N/A'}</Text>
@@ -141,11 +196,9 @@ export const LearnMore = ({
         </div>
       </animated.div>
 
-      {/* Social media links section */}
       <animated.div style={socialSpring} className="mt-[5rem]">
         <Text as="h6" style="text-center text-black mb-4">Connect with us</Text>
         <div className="flex justify-center gap-4">
-          {/* Render each social media icon if the link is available */}
           {social_links.twitter && (
             <a href={social_links.twitter} target="_blank" rel="noopener noreferrer">
               <img src={twitterImg} alt="Twitter" className="w-8 h-8 cursor-pointer" />

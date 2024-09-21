@@ -1,14 +1,16 @@
-/*
- * This React component, ProjectCard, is responsible for rendering an individual project card.
- * It displays project details like name, category, start date, progress, and compensation.
- * The component also allows the user to view more details, edit the project, and delete it via modals.
- * Animations are used to add fade-in effects and button interactions.
+/**
+ * The ProjectCard component displays a card with project information including a thumbnail,
+ * category, profile, and other details. It includes buttons to view more information and
+ * job opportunities related to the project. Modals are used to display additional details.
+ * @param {Object} props - Component props
+ * @param {Object} props.project - The project data to display
+ * @returns {JSX.Element} The rendered component
  */
 
 import React, { useState, useEffect } from 'react';
 import { Text } from '../ui/custom-ui/text'; // Custom Text component
 import { Button } from '../ui/button'; // Custom Button component
-import { Login } from 'iconsax-react'; // Icon for the 'Learn More' button
+import { Login } from 'iconsax-react'; // IcoAVZn for the 'Learn More' button
 import { useSpring, animated, config } from 'react-spring'; // Animation library
 import { LearnMore } from './learn-more'; // Component for the 'Learn More' modal
 import { JobSection } from './job-section'; // Component for job-related functionality
@@ -62,6 +64,7 @@ export const ProjectCard = ({ project }) => {
     progress = 'N/A',
     compensation = ['N/A'],
     overview = {},
+    development_roadmap = 'N/A',
   } = selectedProject;
 
   // Function to handle updating the project when edited
@@ -135,6 +138,7 @@ export const ProjectCard = ({ project }) => {
           >
             <LearnMore
               title={name}
+              development_roadmap={development_roadmap}
               social_links={overview?.social_links || []}
               profile={overview?.profile || 'No profile available'}
               vision_mission={overview?.vision_mission || []}
