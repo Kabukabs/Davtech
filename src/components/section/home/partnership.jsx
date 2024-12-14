@@ -35,14 +35,10 @@ export const Partnership = () => {
       }`}
     >
       <Text as="h1" style="text-4xl font-semibold mb-8 text-blue text-center">
-        Partnership
+      Our Show
       </Text>
       <Text as="h4" style="md:text-lg text-sm mb-8 text-[grey] text-center">
-        At DavTechInvest, we believe in the strength of collaboration and are
-        proud to partner with leading organizations that share our commitment to
-        innovation and excellence. Our partnerships span across technology
-        providers, industry associations, and academic institutions, fostering a
-        rich ecosystem of knowledge and resources.
+      Our weekly startup show brings together startups, mentors, and investors to showcase innovative ideas, share industry insights, and explore investment opportunities, fostering collaboration and growth for everyone involved.
       </Text>
       <div className="flex flex-wrap gap-4 justify-center mb-4 ">
         {Partnership_info.map((info, index) => {
@@ -56,7 +52,7 @@ export const Partnership = () => {
             >
               <div className="w-full p-4 bg-[#F9FEFF] h-[9rem] flex items-center flex-col rounded-t-lg">
                 <div className="w-[7rem] p-4">
-                  <img src={img} alt="object not found" className="w-full" />
+                <img src={img} alt="object not found" className="w-14 h-12 rounded-full" />
                 </div>
               </div>
               <div className="p-4 bg-white rounded-b-lg">

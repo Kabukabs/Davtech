@@ -1,5 +1,6 @@
 import './Navbar.css';
-import { AppLogo } from '../components/common/logo';
+//import { AppLogo } from '../components/common/logo';
+import Logo from '../assets/newLogo.jpg'
 import { NavLink } from 'react-router-dom';
 import { Pageroutes } from '../lib/constants/routes';
 import { useRef } from 'react';
@@ -11,7 +12,7 @@ export const NavBar = () => {
     <header className="w-full my-0">
       <nav className="max-w-[1540px] m-auto w-full flex md:flex-row flex-col md:items-center items-start md:gap-[8rem] gap-0 md:px-[2rem] xl:px-[8rem] md:py-[1rem] py-[0.5rem] px-[1rem] border-b-4 border-b-[ghostwhite] navBg">
         <div className="md:w-fit w-full flex justify-between items-center">
-          <AppLogo />
+        <img src={Logo} alt="App Logo" className="h-10 w-auto" />
           <div className="md:hidden block">
             <Hamburger
               onToggle={() =>

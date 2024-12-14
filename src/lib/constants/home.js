@@ -1,67 +1,63 @@
 export const Services=[
     {
         img:"/service_hero1.svg",
-        title:"Software Developement",
-        info:"We craft bespoke software solutions tailored to the unique needs of investable industries, ensuring scalability and adaptability to evolving market trends."
+        title:"Startup Collaboration & MVP Building",
+        info:"We provide a space where startups can list their projects, seek collaborators, and receive support in building their Minimum Viable Product (MVP). Our platform helps startups find talent, form teams with tech learners and mentors, and navigate the development process efficiently to achieve their product goals."
     },{
         img:"/service_hero2.svg",
-        title:"Data Collecton And Analysis",
-        info:"Utilizing advanced analytics tools, we gather and interpret vast amounts of data to uncover hidden patterns and trends, empowering informed decision-making."
+        title:"Professional Mentorship Opportunities",
+        info:"We connect experienced professionals with startups and tech learners, offering a weekly mentorship program that ensures industry standards are maintained throughout project development. This collaborative mentorship structure fosters the growth of emerging talent while ensuring projects are executed with expert guidance."
     },{
         img:"/service_hero3.svg",
-        title:"Business Pattern and Observations",
-        info:"Our proprietary algorithms monitor market dynamics and consumer behaviors, providing real-time insights into emerging opportunities and risks."
+        title:"Tech Learner Collaboration & Experience",
+        info:"Our platform provides opportunities for tech learners to collaborate on real-world projects with startups. Learners can apply their skills while gaining hands-on experience, building their portfolios, and working under the mentorship of industry professionals. This enables them to learn by doing, grow their expertise, and become part of the startup journey while being compensated through various means—monetary, non-monetary, or equity stakes."
     },{
         img:"/service_hero4.svg",
-        title:"Investor Data Creation",
-        info:"We generate comprehensive reports and dashboards that distill complex data into digestible formats, enabling investors to make data-backed decisions."
+        title:"Investment Opportunities & Analysis",
+        info:"Our platform supports investors by providing detailed startup listings, industry insights, and curated investment opportunities. Investors can explore emerging projects backed by comprehensive data analysis, enabling them to make informed decisions about which startups to fund, with confidence built on data-driven insights."
     }
 ]
 
 export const Partnership_info =[
     {
         img:"/partner1.jpg",
-        title:"Technology Partners",
-        info:"We collaborate closely with top-tier technology providers to stay at the forefront of Web2 and Web3 advancements, ensuring our solutions remain cutting-edge."
+        title:"Watch the Show",
+        info:"Join our weekly startup show featuring startups presenting business ideas, industry experts sharing insights, and investors discussing successful investment factors."
     },{
         img:"/partner2.jpg",
-        title:"Industry Associations",
-        info:"Our memberships in key industry associations enable us to stay abreast of the latest trends and best practices, enhancing our ability to deliver superior services."
+        title:"Next Scheduled",
+        info:"Discover the upcoming show details, including date, time, and speakers. See which startups, mentors, and investors are featured, make sure you don't miss the next session."
     },{
         img:"/partner3.jpg",
-        title:"Academic Institutions",
-        info:"Collaborations with renowned academic institutions fuel our continuous learning and innovation, allowing us to incorporate the latest research findings into our services."
+        title:"Past Shows",
+        info:"Access previous show recordings and highlights to learn from the startups, mentors, and investors featured. Gain valuable insights shared in earlier sessions."
     }
 ]
 
 export const Specialty_info = [
     {
         img:"/service_hero1.svg",
-        title:"Technology",
-        info:"We craft bespoke software solutions tailored to the unique needs of investable industries, ensuring scalability and adaptability to evolving market trends."
+        title:"List Projects & Needs",
+        info:"Startups list their projects, detailing specific requirements. Tech learners can explore these projects and choose where they wish to contribute."
     },{
         img:"/service_hero2.svg",
-        title:"Transport",
-        info:"Utilizing advanced analytics tools, we gather and interpret vast amounts of data to uncover hidden patterns and trends, empowering informed decision-making."
+        title:"Apply & Form Teams",
+        info:"Tech learners apply to join projects, and mentors are invited. The platform helps form well-rounded teams with the right balance of experience."
     },{
         img:"/service_hero3.svg",
-        title:"Healthcare",
-        info:"Our proprietary algorithms monitor market dynamics and consumer behaviors, providing real-time insights into emerging opportunities and risks."
+        title:"Collaborate & Build MVP",
+        info:"Teams collaborate to develop MVPs, working closely under expert mentorship. Contributors get recognition for their involvement on project dashboards."
     },{
         img:"/service_hero4.svg",
-        title:"Finance",
-        info:"We generate comprehensive reports and dashboards that distill complex data into digestible formats, enabling investors to make data-backed decisions."
+        title:"Track Progress & Review",
+        info:" Teams track progress through milestones while mentors review work weekly. This ensures the project stays on track and maintains high standards."
     },{
         img:"/service_hero1.svg",
-        title:"E-Commerce",
-        info:"We craft bespoke software solutions tailored to the unique needs of investable industries, ensuring scalability and adaptability to evolving market trends."
+        title:"Showcase Product & Insights",
+        info:"Startups showcase their MVPs in weekly presentations. This helps highlight progress and demonstrate product potential to interested investors."
     },{
         img:"/service_hero2.svg",
-        title:"Renewable Energy",
-        info:"Utilizing advanced analytics tools, we gather and interpret vast amounts of data to uncover hidden patterns and trends, empowering informed decision-making."
-    },{
-        img:"/service_hero3.svg",
-        title:"Agriculture and Lots more",
-        info:"Our proprietary algorithms monitor market dynamics and consumer behaviors, providing real-time insights into emerging opportunities and risks."
+        title:"Attract Investment & Grow",
+        info:" Investors review data-driven insights and project presentations to decide on funding. Startups receive the backing they need to grow and thrive."
     }
 ]

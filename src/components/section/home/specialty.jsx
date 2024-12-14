@@ -38,11 +38,10 @@ export const Specialty = () => {
       }`}
     >
       <Text as="h1" style="text-4xl font-semibold text-center mb-8">
-        Our Specialization
+        How It Works
       </Text>
       <Text as="h4" style="text-md text-center mb-8 w-full">
-        We specialize in developing software for investable industries across
-        various sectors, including but not limited to:
+      Our platform connects startups, learners, mentors, and investors. Startups list projects, learners apply, and mentors guide the process to develop MVPs. Weekly shows highlight progress, while investors evaluate and fund promising ventures.
       </Text>
       <div className="flex flex-wrap gap-4 justify-center mb-4">
         {Specialty_info.map((info, index) => {
@@ -69,18 +68,6 @@ export const Specialty = () => {
           );
         })}
       </div>
-      <div className="w-fit m-auto">
-        <Button
-          onClick={() => navigate('/about_us')}
-          className="text-blue border border-[#F9FEFF] bg-[#F9FEFF] md:text-xl text-md font-semibol py-[1.5rem] rounded"
-        >
-          View More
-        </Button>
-      </div>
-      <Text as="h5" style="md:text-md text-md text-center mt-4">
-        Each sector benefits from our data-driven approach, helping stakeholders
-        navigate uncertainties and capitalize on opportunities.
-      </Text>
     </div>
   );
 };

@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'; // Import motion for animations
 import careerimage from '/careerimage.svg'; // Importing background image for the Thank You page
 
 export default function Thankyou() {
-  const telegramNumber = '+111111111111'; // Telegram contact number as a string
-
+  const telegramNumber = "+tIPtupHU3r1kNGQ0"; // Telegram contact number as a string
+  
   return (
     <div className="relative h-screen flex flex-col items-center justify-center"> {/* Container for full screen height, centered layout */}
       <motion.div

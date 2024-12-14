@@ -48,11 +48,9 @@ export default function AboutUsPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
+        
       >
-        We Harness The Power Of Cutting-Edge Technology To Transform The Way Businesses Understand And Engage 
-        With Their Customers. Our Team Of Experts Specializes In Software Development, Data Collection, Analysis,
-         And Observing Business Patterns To Create Actionable Insights For Investors. With A Focus On Investable 
-         Industries, We Bridge The Gap Between Technological Innovation And Investment Strategies.
+        We are a dynamic platform designed to foster growth, innovation, and collaboration among startups, tech learners, mentors, and investors. Our mission is to bridge the gap between new businesses and emerging talent by providing a unique environment where startups can achieve rapid development. We enable startups to list their projects, attracting eager tech learners to build their portfolios through real-world challenges. Experienced mentors guide these teams, ensuring projects meet industry standards and best practices. For investors, we offer insights and data-driven analysis to discover promising ventures, connecting them directly with startups. Our weekly startup show highlights this ecosystem, featuring project presentations along side discussions that facilitate meaningful connections among all stakeholders.
       </motion.p>
       <div className="flex justify-center md:justify-start space-x-4 font-semibold text-2xl">
         <motion.button
@@ -85,10 +83,10 @@ export default function AboutUsPage() {
             {/* Service items */}
             {[
               { src: app, alt: 'App Development', text: 'App Development' },
-              { src: cloud, alt: 'Cloud Based Solution', text: 'Cloud Based Solution' },
-              { src: analytics, alt: 'Data Analytics', text: 'Data Analytics' },
+              { src: cloud, alt: 'Solidity security', text: 'Smart-Contract Audit' },
+              { src: analytics, alt: 'Scrum Master', text: 'Scrum Master' },
               { src: development, alt: 'Web 3 Development', text: 'Web 3 Development' },
-              { src: analysis, alt: 'Industrial Analysis', text: 'Industrial Analysis' },
+              { src: analysis, alt: 'Product Management', text: 'Product Management' },
               { src: career, alt: 'Career Development', text: 'Career Development' }
             ].map((item, index) => (
               <motion.span

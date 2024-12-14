@@ -8,7 +8,7 @@ export const Home = () => {
   return (
     <>
       <Introsection />
-      <Service />
+      <Service className="mt-5"  />
       <Specialty />
       <Partnership />
       <Technology />

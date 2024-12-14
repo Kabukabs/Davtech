@@ -16,32 +16,32 @@ const FAQ = () => {
   // Array of FAQ items with questions and answers
   const faqItems = [
     {
-      question: 'What Services Do You Offer?',
-      answer: 'DavTechInvest specializes in software development, data collection, data analysis, and business pattern observation. We create investor-focused data to help businesses and investors make informed decisions.',
+      question: 'What is the primary purpose of your platform??',
+      answer: 'DavTechInvest connects startups with tech learners, mentors, and investors to foster collaboration, support innovation, and accelerate the development of new business ideas.',
     },
     {
-      question: 'How Does Your Software Development Process Work?',
-      answer: 'Our software development process begins with understanding your specific needs. We then design and develop a solution tailored to your requirements, ensuring it aligns with current market trends and future scalability.',
+      question: 'How can startups list their projects?',
+      answer: 'Startups can click the add project button on the project page and fill out a project listing form, detailing their needs, objectives, and the type of collaboration they seek.',
     },
     {
-      question: 'Can You Explain Your Data Collection And Analysis Process?',
-      answer: 'Yes, we employ advanced analytics tools to collect and analyze data from various sources. Our proprietary algorithms then process this data to uncover patterns and trends, which we present in easily understandable formats.',
+      question: 'What opportunities do tech learners have on this platform?',
+      answer: 'Tech learners can apply for projects listed by startups, gaining valuable hands-on experience, building their portfolios, and working alongside industry mentors.',
     },
     {
-      question: 'How Do You Observe Business Patterns?',
-      answer: 'We utilize machine learning models to monitor market dynamics and consumer behaviors in real-time. This enables us to provide timely insights into emerging opportunities and risks.',
+      question: 'How does the mentorship program work?',
+      answer: 'Mentors, who are experienced professionals, can sign up to guide tech learners and startups. They provide insights, advice, and support throughout the project lifecycle to ensure quality and adherence to industry standards.',
     },
     {
-      question: 'What Kind Of Industries Do You Serve?',
-      answer: 'We focus on investable industries such as technology, healthcare, finance, e-commerce, and renewable energy. Each sector benefits from our data-driven approach, helping stakeholders navigate uncertainties and capitalize on opportunities.',
+      question: 'What type of support can investors expect?',
+      answer: 'Investors receive comprehensive industry insights, data-driven analysis, and direct access to promising startups. Our platform helps them make informed decisions regarding potential investments.',
     },
     {
-      question: 'How Much Does Your Service Cost?',
-      answer: 'Our pricing is customized based on the scope of the project, the complexity of the data involved, and the duration of the engagement. For detailed pricing, please contact us directly.',
+      question: 'How can I join the weekly startup show?',
+      answer: 'Users can register through our platform to receive notifications about upcoming shows. Links to join the live sessions will be shared via email or our platform announcements.',
     },
     {
-      question: 'How Long Does It Take To Complete A Project?',
-      answer: 'The timeline for completing a project varies depending on its complexity. We strive to deliver high-quality work efficiently, aiming for a balance between thoroughness and timeliness.',
+      question: 'What is the process for selecting mentors?',
+      answer: 'Mentors are selected based on their industry experience, expertise, and ability to contribute positively to the projects. Startups can review mentor profiles and request specific mentors for their projects.',
     },
   ];
 

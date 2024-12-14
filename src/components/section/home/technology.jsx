@@ -36,24 +36,18 @@ export const Technology = () => {
     >
       <div className="gap-12 grid md:grid-cols-2 grid-cols-1">
         <div>
-          <Text as="h2" style="text-4xl font-extrabold mb-8 text-blue">
-            Technology
+          <Text as="h2" style="text-2xl font-extrabold mb-8 text-blue">
+            Overview
           </Text>
-          <Text as="h4" style="md:text-lg text-md mb-8">
-            Our expertise lies at the intersection of traditional web
-            technologies (Web2) and the burgeoning field of blockchain and
-            distributed ledger technologies (Web3). We leverage these platforms
-            to offer innovative solutions that drive efficiency, transparency,
-            and growth.
+          <Text as="h6" style="md:text-lg text-md mb-8">
+          Our platform connects startups, tech learners, mentors, and investors to foster growth by providing industry data insights, collaboration opportunities, mentorship, and investment support.
           </Text>
           <div className="md:text-lg text-sm font-semibold gap-2">
-            Join us in revolutionizing the investment landscape with data-driven
-            insights.
+          Join us,  
             <Link to="/contact us" className="text-blue text-none mx-2">
               Contact us
             </Link>{' '}
-            today to explore how DavTechInvest can elevate your investment
-            strategy.
+            today Let's build something great together!
           </div>
         </div>
         <div>

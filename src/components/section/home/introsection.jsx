@@ -20,41 +20,42 @@ export const Introsection = () => {
         <div className="animate-fadeInUp">
           <Text
             as="h2"
-            style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
+            style="lg:text-2xl text-wrap md:text-2xl text-1xl font-extrabold"
           >
-            EMPOWERING
+          Empowering Startups.
           </Text>
           <Text
             as="h2"
-            style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold text-blue"
+            style="lg:text-2xl text-wrap md:text-2xl text-1xl font-extrabold text-blue"
           >
-            INVESTMENT
+          Connecting Talents.
           </Text>
           <Text
             as="h2"
-            style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
+            style="lg:text-2xl text-wrap md:text-2xl text-1xl font-extrabold"
           >
-            THROUGH
+          Mentoring Talents.
           </Text>
           <Text
             as="h2"
-            style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold text-blue"
+            style="lg:text-2xl text-wrap md:text-2xl text-1xl font-extrabold text-blue"
           >
-            DATA-DRIVEN
+          Startups Investment.
           </Text>
           <Text
             as="h2"
-            style="lg:text-5xl text-wrap md:text-4xl text-4xl font-extrabold"
+            style="lg:text-2xl text-wrap md:text-2xl text-xl font-extrabold"
           >
-            SOLUTIONS
+            Connect. Collaborate. Innovate.
+        
           </Text>
         </div>
         <div className="animate-fadeInUp flex justify-center">
           <Text
-            as="h6"
-            style="md:text-xl text-lg font-semibold lg:w-[100%] w-full"
+            as="h5"
+           style="lg:text-1xl text-wrap md:text-1xl text-xl "
           >
-            Leveraging Web2 & Web3 Technologies For Investable Industry Success
+            "Explore Opportunities and Let's create the future together."
           </Text>
         </div>
         <div className="grid grid-cols-2">
