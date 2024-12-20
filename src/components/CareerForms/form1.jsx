@@ -176,8 +176,9 @@ export default function SkillCollab() {
               {cvFileName} {/* Display the file name or default text */}
             </label>
           </label>
+          
         </motion.div>
-
+        <div><p>"Please if the submission is not possible, send details to contactdavinvest@gmail.com"</p></div>
         {/* Submit button */}
         <motion.div
           className="md:flex md:items-center"

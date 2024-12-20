@@ -224,8 +224,10 @@ export default function MentorAdvisor() {
                 Advisor
               </label>
             </div>
-          </motion.div>
 
+            
+          </motion.div>
+          <div><p>"Please if the submission is not possible, send details to contactdavinvest@gmail.com"</p></div>
           {/* Submit button */}
           <motion.div
             className="md:flex md:items-center"
