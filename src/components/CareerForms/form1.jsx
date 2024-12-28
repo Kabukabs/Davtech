@@ -63,7 +63,7 @@ export default function SkillCollab() {
       console.log('Submitting form data:', formData);
 
       // Add form data to Firestore collection
-      await addDoc(collection(db, 'mentors_advisors'), formData);
+      await addDoc(collection(db, 'skill_collab'), formData);
       console.log('Form data added to Firestore');
 
       // Reset form state and navigate to thank-you page
