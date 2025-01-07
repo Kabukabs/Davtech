@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-.blur-bg {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(1px);
-  background:rgba(0,26,26,.16);
-}
-
 .service_herobg{
   background-image: url("/service_hero5.svg");
 }

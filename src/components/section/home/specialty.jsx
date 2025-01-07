@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Specialty_info } from '../../../lib/constants/home';
 import { Text } from '../../ui/custom-ui/text';
@@ -6,37 +5,8 @@ import { Button } from '../../ui/button';
 
 export const Specialty = () => {
   const navigate = useNavigate();
-  const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <div
-      ref={sectionRef}
-      className={`max-w-[1540px] w-full md:gap-8 gap-4 lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:py-[5rem] p-4 py-[3rem] ${
-        inView ? 'animate-fadeInUp' : 'opacity-0'
-      }`}
-    >
+    <div className="max-w-[1540px] w-full md:gap-8 gap-4 lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:py-[5rem] p-4 py-[3rem]">
       <Text as="h1" style="text-4xl font-semibold text-center mb-8">
         Our Specialization
       </Text>
@@ -50,9 +20,7 @@ export const Specialty = () => {
           return (
             <div
               key={index}
-              className={`flex flex-col gap-4 p-4 rounded-lg bg-[ghostwhite] md:w-[30%] w-full ${
-                inView ? 'animate-fadeInUp' : 'opacity-0'
-              }`}
+              className="flex flex-col gap-4 p-4 rounded-lg bg-[ghostwhite] md:w-[30%] w-full"
             >
               <div className="gap-2 flex items-center">
                 <div className="w-[3rem]">

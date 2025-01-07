@@ -1,7 +1,8 @@
 [
   {
-    "origin": ["*"],  // Allowed origin(s) for cross-origin requests. Replace '*' with specific domains as needed, such as 'http://localhost:5174' for local development.
-    "method": ["GET", "POST", "PUT"],     // HTTP methods allowed for cross-origin requests. Customize this list based on required methods.
-    "maxAgeSeconds": 3600                 // Maximum time (in seconds) that the results of a preflight request can be cached by the browser. Set to 3600 seconds (1 hour) by default.
+    "origin": ["http://localhost:5174"], //Replace 'http://localhost:5174' with the developer's own localhost URL if different.
+    "method": ["GET", "POST", "PUT"],
+    "maxAgeSeconds": 3600
   }
 ]
+ 

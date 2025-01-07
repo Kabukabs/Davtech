@@ -3,7 +3,7 @@ import { NavBar } from '../Navbar/navbar';
 import { Footer } from '../footer/Footer';
 export const PageLayout = () => {
   return (
-    <div className="m-auto min-h-[100vh] overflow-x-hidden flex flex-col">
+    <div className="m-auto min-h-[100vh] flex flex-col">
       <NavBar />
       <main className="my-0 flex-grow">
         <Outlet />

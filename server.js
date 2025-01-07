@@ -1,4 +1,4 @@
-// Importing required modules
+// Import required modules
 const express = require('express'); // Express framework for building web applications
 const cors = require('cors');       // Middleware for handling CORS (Cross-Origin Resource Sharing)
 const bodyParser = require('body-parser'); // Middleware for parsing request bodies
@@ -25,10 +25,10 @@ const app = express(); // Create an instance of Express
 
 // Enable CORS
 app.use(cors({
-  origin: ['http://localhost:9000'], // Update with your localhost URL if different
-  methods: ['GET', 'POST', 'PUT'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  maxAge: 3600
+  origin: '*', // Allow all origins (adjust as needed for security)
+  methods: ['GET', 'POST', 'PUT'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  maxAge: 3600 // Cache preflight request results for 3600 seconds
 }));
 
 // Middleware to parse URL-encoded and JSON request bodies
@@ -50,11 +50,9 @@ app.post('/submit-form', async (req, res) => {
 
     // Generate PDF from form data
     const pdfBuffer = await generatePDF(formData); // Generate PDF and get it as a buffer
-    console.log('PDF generated'); // Log PDF generation
 
     // Send PDF via email
     await sendEmail(formData, pdfBuffer); // Send email with the form data and PDF attachment
-    console.log('Email sent'); // Log email sending
 
     res.status(200).send('Form submitted successfully!'); // Send success response
   } catch (error) {
@@ -63,13 +61,7 @@ app.post('/submit-form', async (req, res) => {
   }
 });
 
-/**
- * Generates a PDF document from the provided form data.
- *
- * @param {Object} data - The form data to include in the PDF.
- * @return {Promise<Buffer>} - A promise that resolves to a buffer containing the PDF data.
- * @throws {Error} - Throws an error if PDF generation fails.
- */
+// Function to generate PDF from form data
 const generatePDF = (data) => {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument(); // Create a new PDF document
@@ -92,14 +84,7 @@ const generatePDF = (data) => {
   });
 };
 
-/**
- * Sends an email with the provided form data and PDF attachment.
- *
- * @param {Object} data - The form data to include in the email.
- * @param {Buffer} pdfBuffer - The PDF buffer to attach to the email.
- * @return {Promise<void>} - A promise that resolves when the email has been sent.
- * @throws {Error} - Throws an error if sending the email fails.
- */
+// Function to send email with form data and PDF attachment
 const sendEmail = async (data, pdfBuffer) => {
   try {
     console.log('Setting up email transporter...'); // Log email setup
@@ -134,7 +119,7 @@ const sendEmail = async (data, pdfBuffer) => {
 };
 
 // Start the server
-const PORT = process.env.VITE_PORT || 5174 || 5173 || 9000; // Port to listen on
+const PORT = process.env.VITE_PORT; // Port to listen on
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the server start
 });

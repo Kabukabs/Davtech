@@ -1,39 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
 import { Partnership_info } from '../../../lib/constants/home';
 import { Text } from '../../ui/custom-ui/text';
-
 export const Partnership = () => {
-  const [inView, setInView] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <div
-      ref={sectionRef}
-      className={`bg-[ghostwhite] max-w-[1540px] md:gap-8 gap-4 lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:py-[4rem] px-4 py-[3rem] ${
-        inView ? 'animate-fadeIn' : 'opacity-0'
-      }`}
-    >
+    <div className="bg-[ghostwhite]  max-w-[1540px] md:gap-8 gap-4 lg:px-[8rem] xl:px-[14rem] md:px-[4rem] md:py-[4rem] px-4 py-[3rem]">
       <Text as="h1" style="text-4xl font-semibold mb-8 text-blue text-center">
         Partnership
       </Text>
@@ -50,9 +19,7 @@ export const Partnership = () => {
           return (
             <div
               key={index}
-              className={`flex flex-col bg-white rounded-t-lg md:w-[30%] w-full justify-between items-center rounded-b-lg ${
-                inView ? 'animate-fadeInUp' : 'opacity-0'
-              }`}
+              className="flex flex-col bg-white rounded-t-lg md:w-[30%] w-full justify-between items-center rounded-b-lg"
             >
               <div className="w-full p-4 bg-[#F9FEFF] h-[9rem] flex items-center flex-col rounded-t-lg">
                 <div className="w-[7rem] p-4">

@@ -27,7 +27,7 @@ export const DropdownLayout = ({ menu, label, trigger }) => {
   return (
     <Dialog>
       <DropdownMenu>
-        //Dropdown Trigger
+        {/**Dopdown Trigger */}
         <DropdownMenuTrigger asChild>
           {trigger ? (
             trigger
@@ -37,7 +37,7 @@ export const DropdownLayout = ({ menu, label, trigger }) => {
             </div>
           )}
         </DropdownMenuTrigger>
-        //Dropdown Label
+        {/**Dopdown Trigger */}
         <DropdownMenuContent className="w-56">
           {label && (
             <DropdownMenuLabel className="bg-lightgrey">
@@ -57,7 +57,6 @@ export const DropdownLayout = ({ menu, label, trigger }) => {
                     <DropdownMenuPortal>
                       <DropdownMenuSubContent>
                         {subTitles.map((sub, index) => {
-                          //if the dropdown has another dropdown; return the inner dropdown else return normal dropdown
                           if (sub.modalNode) {
                             return (
                               <DialogTrigger asChild key={index}>
