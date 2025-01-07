@@ -23,6 +23,8 @@ module.exports = {
       colors: {
         darkblue: "#00008b",
         babyblue: "#89CFF0",
+        lightblue:"#C7EEFF",
+        whitethick:"#FAFAFA",
         blue:"#007AFF",
         grey:"#D9D9D9",
         surfaceWhite:"#FAFBF9",
@@ -76,10 +78,25 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        fadeInUp: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        fadeInLeft: {
+          '0%': { opacity: 0, transform: 'translateX(-20px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
+        fadeInRight: {
+          '0%': { opacity: 0, transform: 'translateX(20px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        fadeInUp: 'fadeInUp 1s ease-out',
+        fadeInLeft: 'fadeInLeft 1s ease-out',
+        fadeInRight: 'fadeInRight 1s ease-out',
       },
     },
   },
